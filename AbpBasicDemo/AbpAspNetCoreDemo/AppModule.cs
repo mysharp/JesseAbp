@@ -11,9 +11,24 @@ namespace AbpAspNetCoreDemo
     [DependsOn(typeof(AbpAutofacModule))]
     public class AppModule: AbpModule
     {
+        public override void PreConfigureServices(ServiceConfigurationContext context)
+        {
+            base.PreConfigureServices(context);
+        }
+        
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
             base.ConfigureServices(context);
+        }
+
+        public override void PostConfigureServices(ServiceConfigurationContext context)
+        {
+            base.PostConfigureServices(context);
+        }
+
+        public override void OnPreApplicationInitialization(ApplicationInitializationContext context)
+        {
+            base.OnPreApplicationInitialization(context);
         }
 
         public override void OnApplicationInitialization(ApplicationInitializationContext context)
@@ -34,5 +49,6 @@ namespace AbpAspNetCoreDemo
             app.UseRouting();
             app.UseConfiguredEndpoints();
         }
+
     }
 }
