@@ -15,6 +15,6 @@ namespace AbpLoanDemo.Customer.Application.Contracts.Models.Dtos
 
         public string IdNo { get; set; }
 
-        public List<LinkmanDto> Linkmans { get; set; }
+        public List<LinkmanDto> Linkmen { get; set; }
     }
 }
