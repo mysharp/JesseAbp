@@ -7,9 +7,20 @@ namespace AbpLoanDemo.Loan.Domain.Entities
 {
     public class LoanRequest : AggregateRootWithEvents<Guid>
     {
-        public Applier Applier { get; private set; }
+        private LoanRequest()
+        {
+        }
 
-        public IEnumerable<Applier> Partners { get; set; }
+        public LoanRequest(Applier applier)
+        {
+            Applier = applier;
+
+            AddDomainEvent(new LoanRequestAddedDomainEvent(this));
+        }
+
+        public Applier Applier { get; }
+
+        public IEnumerable<Applier> Partners { get; private set; }
 
         public LoanStatus Status { get; private set; }
 
@@ -19,44 +30,33 @@ namespace AbpLoanDemo.Loan.Domain.Entities
 
         public decimal Amount { get; private set; }
 
-        private LoanRequest()
-        {
-        }
-
-        public LoanRequest(Applier applier)
-        {
-            Applier = applier;
-            
-            AddDomainEvent(new LoanRequestAddedDomainEvent(this));
-        }
-
         public void SetScore(decimal score)
         {
-            this.Score = score;
+            Score = score;
             if (score > 7.0m)
             {
-                this.Status = LoanStatus.Approved;
+                Status = LoanStatus.Approved;
                 AddDomainEvent(new LoanRequestApprovedDomainEvent(this));
             }
             else
             {
-                this.Status = LoanStatus.Refused;
+                Status = LoanStatus.Refused;
                 AddDomainEvent(new LoanRequestRefusedDomainEvent(this));
             }
         }
 
         public void SetGuarantee(Guarantee guarantee)
         {
-            this.Guarantee = guarantee;
-            this.Status = LoanStatus.Guaranteed;
+            Guarantee = guarantee;
+            Status = LoanStatus.Guaranteed;
 
             AddDomainEvent(new LoanRequestGuaranteeAddedDomainEvent(this));
         }
 
         public void SetAmount(decimal amount)
         {
-            this.Amount = amount;
-            this.Status = LoanStatus.Amounted;
+            Amount = amount;
+            Status = LoanStatus.Amounted;
 
             AddDomainEvent(new LoanRequestAmountedDomainEvent(this));
         }

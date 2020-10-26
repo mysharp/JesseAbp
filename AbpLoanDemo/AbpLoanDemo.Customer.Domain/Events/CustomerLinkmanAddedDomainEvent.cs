@@ -11,7 +11,7 @@ namespace AbpLoanDemo.Customer.Domain.Events
             Linkman = linkman;
         }
 
-        public  Entities.Customer Customer { get; }
+        public Entities.Customer Customer { get; }
 
         public Linkman Linkman { get; }
     }

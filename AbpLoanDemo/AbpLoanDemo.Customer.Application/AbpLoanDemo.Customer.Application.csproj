@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Profiles\CustomerProfile.cs~RF1502adc5.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.AutoMapper" Version="3.2.1" />
+    <PackageReference Include="Volo.Abp.Ddd.Application" Version="3.2.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AbpLoanDemo.Customer.Application.Contracts\AbpLoanDemo.Customer.Application.Contracts.csproj" />
+    <ProjectReference Include="..\AbpLoanDemo.Customer.Domain\AbpLoanDemo.Customer.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Volo.Abp.Core">
+      <HintPath>C:\Users\Administrator\.nuget\packages\volo.abp.core\3.2.1\lib\netstandard2.0\Volo.Abp.Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

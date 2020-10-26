@@ -5,12 +5,24 @@ namespace AbpLoanDemo.Loan.Domain.Entities
 {
     public class Applier : Entity<Guid>
     {
-        public string CustomerId { get; set; }
+        private Applier()
+        {
+        }
 
-        public string Name { get; set; }
+        public Applier(Guid customerId, string name, string phone, string idNo)
+        {
+            CustomerId = customerId;
+            Name = name;
+            Phone = phone;
+            IdNo = idNo;
+        }
 
-        public string Phone { get; set; }
+        public Guid CustomerId { get; }
 
-        public string IdNo { get; set; }
+        public string Name { get; }
+
+        public string Phone { get; }
+
+        public string IdNo { get; }
     }
 }
