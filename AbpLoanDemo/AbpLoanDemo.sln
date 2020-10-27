@@ -41,6 +41,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbpLoanDemo.Customer.DbMigr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbpLoanDemo.Loan.DbMigrator", "AbpLoanDemo.Loan.DbMigrator\AbpLoanDemo.Loan.DbMigrator.csproj", "{79CE1CDE-56D6-4665-B997-8E2B7643821F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbpLoanDemo.EntityFrameworkCore.Shared", "AbpLoanDemo.EntityFrameworkCore.Shared\AbpLoanDemo.EntityFrameworkCore.Shared.csproj", "{FB6159D9-AEFF-470F-807C-23E464C0031B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -107,6 +109,10 @@ Global
 		{79CE1CDE-56D6-4665-B997-8E2B7643821F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79CE1CDE-56D6-4665-B997-8E2B7643821F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79CE1CDE-56D6-4665-B997-8E2B7643821F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB6159D9-AEFF-470F-807C-23E464C0031B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB6159D9-AEFF-470F-807C-23E464C0031B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB6159D9-AEFF-470F-807C-23E464C0031B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB6159D9-AEFF-470F-807C-23E464C0031B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -129,6 +135,7 @@ Global
 		{CE9D1263-2B0A-40A7-A8DB-C351F598864F} = {4F4C7CC2-3C1F-4CE3-9506-49072A16E3D8}
 		{A51A0E81-0E00-4FCF-968F-C94B46EC8FCB} = {A9EBB0A6-194F-4F43-919A-74BB617FC9D8}
 		{79CE1CDE-56D6-4665-B997-8E2B7643821F} = {4F4C7CC2-3C1F-4CE3-9506-49072A16E3D8}
+		{FB6159D9-AEFF-470F-807C-23E464C0031B} = {6556921E-91A7-4237-9FC7-00BB3E6CE0B5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {43053EBB-E9C6-4197-BF5F-C04171EBE765}

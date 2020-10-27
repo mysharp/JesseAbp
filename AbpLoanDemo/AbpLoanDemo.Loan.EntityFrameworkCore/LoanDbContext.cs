@@ -1,32 +1,33 @@
-﻿using AbpLoanDemo.Domain.Shared;
-using MediatR;
-using Microsoft.EntityFrameworkCore;
-using System.Linq;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using AbpLoanDemo.EntityFrameworkCore.Shared;
+using AbpLoanDemo.Loan.Domain.Entities;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
 
-namespace AbpLoanDemo.Customer.EntityFrameworkCore
+namespace AbpLoanDemo.Loan.EntityFrameworkCore
 {
-    [ConnectionStringName("CustomerConnString")]
-    public class CustomerDbContext : AbpDbContext<CustomerDbContext>
+    [ConnectionStringName("LoanConnString")]
+    public class LoanDbContext : AbpDbContext<LoanDbContext>
     {
         private readonly IMediator _mediator;
 
-        public CustomerDbContext(DbContextOptions<CustomerDbContext> options, IMediator mediator) : base(options)
+        public LoanDbContext(DbContextOptions<LoanDbContext> options, IMediator mediator) : base(options)
         {
             _mediator = mediator;
         }
 
-        public DbSet<Domain.Entities.Customer> Customers { get; set; }
+        public DbSet<LoanRequest> LoanRequests { get; set; }
 
-        public DbSet<Domain.Entities.Linkman> Linkmen { get; set; }
+        public DbSet<Guarantee> Guarantees { get; set; }
+
+        public DbSet<Applier> Appliers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ConfigureCustomerStore();
+            modelBuilder.ConfigureLoanStore();
 
             base.OnModelCreating(modelBuilder);
         }

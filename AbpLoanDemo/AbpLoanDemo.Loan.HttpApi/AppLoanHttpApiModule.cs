@@ -1,6 +1,7 @@
 ﻿using AbpLoanDemo.Customer.Application.Contracts;
 using AbpLoanDemo.Loan.Application;
 using AbpLoanDemo.Loan.Application.DomainEventHandlers;
+using AbpLoanDemo.Loan.EntityFrameworkCore.DbMigrations;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,6 +19,7 @@ namespace AbpLoanDemo.Loan.HttpApi
     [DependsOn(typeof(AbpHttpClientModule))] //引入此Module，不然HttpClientProxy报错
     [DependsOn(typeof(AppLoanApplicationModule))]
     [DependsOn(typeof(AppCustomerApplicationContractModule))]
+    [DependsOn(typeof(AppLoanEntityFrameworkCoreDbMigrationModule))]
     public class AppLoanHttpApiModule : AbpModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)

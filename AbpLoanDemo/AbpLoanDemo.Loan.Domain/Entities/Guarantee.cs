@@ -16,10 +16,10 @@ namespace AbpLoanDemo.Loan.Domain.Entities
             ExpiryDate = expiryDate;
         }
 
-        public string Name { get; }
+        public string Name { get; private set; }
 
-        public decimal Cost { get; }
+        public decimal Cost { get; private set; }
 
-        public DateTime ExpiryDate { get; }
+        public DateTime ExpiryDate { get; private set; }
     }
 }

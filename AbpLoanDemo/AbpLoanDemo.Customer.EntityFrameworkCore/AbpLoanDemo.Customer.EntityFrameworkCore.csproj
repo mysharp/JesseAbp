@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AbpLoanDemo.Customer.Domain\AbpLoanDemo.Customer.Domain.csproj" />
+    <ProjectReference Include="..\AbpLoanDemo.EntityFrameworkCore.Shared\AbpLoanDemo.EntityFrameworkCore.Shared.csproj" />
   </ItemGroup>
 
 </Project>
