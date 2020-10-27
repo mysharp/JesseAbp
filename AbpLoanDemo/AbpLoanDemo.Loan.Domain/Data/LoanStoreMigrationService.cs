@@ -7,8 +7,6 @@ namespace AbpLoanDemo.Loan.Domain.Data
 {
     public class LoanStoreMigrationService : ITransientDependency
     {
-        public ILogger<LoanStoreMigrationService> Logger { get; set; }
-
         private readonly ILoanStoreSchemaMigrator _dbSchemaMigrator;
 
         public LoanStoreMigrationService(ILoanStoreSchemaMigrator dbSchemaMigrator)
@@ -17,6 +15,8 @@ namespace AbpLoanDemo.Loan.Domain.Data
 
             Logger = NullLogger<LoanStoreMigrationService>.Instance;
         }
+
+        public ILogger<LoanStoreMigrationService> Logger { get; set; }
 
         public async Task MigrateAsync()
         {
@@ -27,6 +27,5 @@ namespace AbpLoanDemo.Loan.Domain.Data
 
             Logger.LogInformation("Successfully completed database migrations.");
         }
-
     }
 }

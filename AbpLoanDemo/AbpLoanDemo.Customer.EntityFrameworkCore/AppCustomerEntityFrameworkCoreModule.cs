@@ -16,15 +16,12 @@ namespace AbpLoanDemo.Customer.EntityFrameworkCore
                 options.AddDefaultRepositories();
 
                 options.Entity<Domain.Entities.Customer>(opt =>
-                    {
-                        opt.DefaultWithDetailsFunc = q => q.Include(c => c.Linkman);
-                    });
+                {
+                    opt.DefaultWithDetailsFunc = q => q.Include(c => c.Linkman);
+                });
             });
 
-            Configure<AbpDbContextOptions>(options =>
-            {
-                options.UseSqlServer();
-            });
+            Configure<AbpDbContextOptions>(options => { options.UseSqlServer(); });
         }
     }
 }

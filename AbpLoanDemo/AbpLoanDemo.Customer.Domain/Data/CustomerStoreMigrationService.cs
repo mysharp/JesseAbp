@@ -1,14 +1,12 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
-using System.Threading.Tasks;
 using Volo.Abp.DependencyInjection;
 
 namespace AbpLoanDemo.Customer.Domain.Data
 {
     public class CustomerStoreMigrationService : ITransientDependency
     {
-        public ILogger<CustomerStoreMigrationService> Logger { get; set; }
-
         private readonly ICustomerStoreSchemaMigrator _dbSchemaMigrator;
 
         public CustomerStoreMigrationService(ICustomerStoreSchemaMigrator dbSchemaMigrator)
@@ -17,6 +15,8 @@ namespace AbpLoanDemo.Customer.Domain.Data
 
             Logger = NullLogger<CustomerStoreMigrationService>.Instance;
         }
+
+        public ILogger<CustomerStoreMigrationService> Logger { get; set; }
 
         public async Task MigrateAsync()
         {
@@ -27,6 +27,5 @@ namespace AbpLoanDemo.Customer.Domain.Data
 
             Logger.LogInformation("Successfully completed database migrations.");
         }
-
     }
 }

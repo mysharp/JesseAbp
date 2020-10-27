@@ -12,6 +12,5 @@ namespace AbpLoanDemo.DbMigrator
     [DependsOn(typeof(AppLoanDomainModule), typeof(AppLoanEntityFrameworkCoreDbMigrationModule))]
     public class AppDbMigratorModule : AbpModule
     {
-
     }
 }

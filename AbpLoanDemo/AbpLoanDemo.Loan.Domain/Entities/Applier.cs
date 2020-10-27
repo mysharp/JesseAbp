@@ -17,12 +17,12 @@ namespace AbpLoanDemo.Loan.Domain.Entities
             IdNo = idNo;
         }
 
-        public Guid CustomerId { get; private set; }
+        public Guid CustomerId { get; }
 
-        public string Name { get; private set; }
+        public string Name { get; }
 
-        public string Phone { get; private set; }
+        public string Phone { get; }
 
-        public string IdNo { get; private set; }
+        public string IdNo { get; }
     }
 }

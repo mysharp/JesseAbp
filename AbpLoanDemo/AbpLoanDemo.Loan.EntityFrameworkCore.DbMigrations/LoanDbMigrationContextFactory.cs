@@ -21,7 +21,7 @@ namespace AbpLoanDemo.Loan.EntityFrameworkCore.DbMigrations
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", optional: false);
+                .AddJsonFile("appsettings.json", false);
 
             return builder.Build();
         }

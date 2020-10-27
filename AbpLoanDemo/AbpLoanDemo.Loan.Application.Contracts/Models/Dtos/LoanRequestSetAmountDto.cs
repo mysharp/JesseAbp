@@ -1,5 +1,4 @@
-﻿
-namespace AbpLoanDemo.Customer.Application.Contracts.Models.Dtos
+﻿namespace AbpLoanDemo.Customer.Application.Contracts.Models.Dtos
 {
     public class LoanRequestSetAmountDto
     {

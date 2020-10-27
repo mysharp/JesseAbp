@@ -19,14 +19,13 @@ namespace AbpLoanDemo.Customer.Application
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="id"></param>
         /// <remarks>参数名称需要为id，不然动态代理会无法识别</remarks>
         /// <returns></returns>
         public async Task<CustomerDto> GetAsync(Guid id)
         {
-            var customer = await _customerRepository.GetAsync(p => p.Id == id,true);
+            var customer = await _customerRepository.GetAsync(p => p.Id == id);
 
             return ObjectMapper.Map<Domain.Entities.Customer, CustomerDto>(customer);
         }

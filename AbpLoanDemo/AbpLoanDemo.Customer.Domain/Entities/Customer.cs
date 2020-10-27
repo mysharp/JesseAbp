@@ -1,7 +1,7 @@
-﻿using AbpLoanDemo.Customer.Domain.Events;
-using AbpLoanDemo.Domain.Shared;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using AbpLoanDemo.Customer.Domain.Events;
+using AbpLoanDemo.Domain.Shared;
 
 namespace AbpLoanDemo.Customer.Domain.Entities
 {
@@ -15,9 +15,9 @@ namespace AbpLoanDemo.Customer.Domain.Entities
             Phone = phone;
         }
 
-        public string Name { get; private set; }
+        public string Name { get; }
 
-        public string Phone { get; private set; }
+        public string Phone { get; }
 
         public string Address { get; private set; }
 
@@ -27,14 +27,14 @@ namespace AbpLoanDemo.Customer.Domain.Entities
 
         public void SetAddress(string address)
         {
-            this.Address = address;
+            Address = address;
 
             AddDomainEvent(new CustomerChangedDomainEvent(this));
         }
 
         public void SetIdNo(string idNo)
         {
-            this.IdNo = idNo;
+            IdNo = idNo;
 
             AddDomainEvent(new CustomerChangedDomainEvent(this));
         }

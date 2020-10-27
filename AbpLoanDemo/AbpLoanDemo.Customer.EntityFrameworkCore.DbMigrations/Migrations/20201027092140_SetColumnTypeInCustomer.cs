@@ -7,8 +7,8 @@ namespace AbpLoanDemo.Customer.EntityFrameworkCore.DbMigrations.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<string>(
-                name: "Phone",
-                table: "Linkman",
+                "Phone",
+                "Linkman",
                 maxLength: 50,
                 nullable: true,
                 oldClrType: typeof(string),
@@ -16,8 +16,8 @@ namespace AbpLoanDemo.Customer.EntityFrameworkCore.DbMigrations.Migrations
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<string>(
-                name: "Name",
-                table: "Linkman",
+                "Name",
+                "Linkman",
                 maxLength: 100,
                 nullable: false,
                 oldClrType: typeof(string),
@@ -25,8 +25,8 @@ namespace AbpLoanDemo.Customer.EntityFrameworkCore.DbMigrations.Migrations
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<string>(
-                name: "IdNo",
-                table: "Linkman",
+                "IdNo",
+                "Linkman",
                 maxLength: 50,
                 nullable: true,
                 oldClrType: typeof(string),
@@ -34,8 +34,8 @@ namespace AbpLoanDemo.Customer.EntityFrameworkCore.DbMigrations.Migrations
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<string>(
-                name: "Phone",
-                table: "Customer",
+                "Phone",
+                "Customer",
                 maxLength: 50,
                 nullable: true,
                 oldClrType: typeof(string),
@@ -43,8 +43,8 @@ namespace AbpLoanDemo.Customer.EntityFrameworkCore.DbMigrations.Migrations
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<string>(
-                name: "Name",
-                table: "Customer",
+                "Name",
+                "Customer",
                 maxLength: 100,
                 nullable: false,
                 oldClrType: typeof(string),
@@ -52,8 +52,8 @@ namespace AbpLoanDemo.Customer.EntityFrameworkCore.DbMigrations.Migrations
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<string>(
-                name: "IdNo",
-                table: "Customer",
+                "IdNo",
+                "Customer",
                 maxLength: 50,
                 nullable: true,
                 oldClrType: typeof(string),
@@ -64,52 +64,52 @@ namespace AbpLoanDemo.Customer.EntityFrameworkCore.DbMigrations.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<string>(
-                name: "Phone",
-                table: "Linkman",
-                type: "nvarchar(max)",
+                "Phone",
+                "Linkman",
+                "nvarchar(max)",
                 nullable: true,
                 oldClrType: typeof(string),
                 oldMaxLength: 50,
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<string>(
-                name: "Name",
-                table: "Linkman",
-                type: "nvarchar(max)",
+                "Name",
+                "Linkman",
+                "nvarchar(max)",
                 nullable: true,
                 oldClrType: typeof(string),
                 oldMaxLength: 100);
 
             migrationBuilder.AlterColumn<string>(
-                name: "IdNo",
-                table: "Linkman",
-                type: "nvarchar(max)",
+                "IdNo",
+                "Linkman",
+                "nvarchar(max)",
                 nullable: true,
                 oldClrType: typeof(string),
                 oldMaxLength: 50,
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<string>(
-                name: "Phone",
-                table: "Customer",
-                type: "nvarchar(max)",
+                "Phone",
+                "Customer",
+                "nvarchar(max)",
                 nullable: true,
                 oldClrType: typeof(string),
                 oldMaxLength: 50,
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<string>(
-                name: "Name",
-                table: "Customer",
-                type: "nvarchar(max)",
+                "Name",
+                "Customer",
+                "nvarchar(max)",
                 nullable: true,
                 oldClrType: typeof(string),
                 oldMaxLength: 100);
 
             migrationBuilder.AlterColumn<string>(
-                name: "IdNo",
-                table: "Customer",
-                type: "nvarchar(max)",
+                "IdNo",
+                "Customer",
+                "nvarchar(max)",
                 nullable: true,
                 oldClrType: typeof(string),
                 oldMaxLength: 50,

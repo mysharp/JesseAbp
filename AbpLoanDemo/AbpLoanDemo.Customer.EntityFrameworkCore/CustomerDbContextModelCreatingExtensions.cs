@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AbpLoanDemo.Customer.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using Volo.Abp;
 using Volo.Abp.EntityFrameworkCore.Modeling;
 
@@ -23,8 +24,8 @@ namespace AbpLoanDemo.Customer.EntityFrameworkCore
                 c.Metadata.FindNavigation(nameof(Domain.Entities.Customer.Linkman))
                     .SetPropertyAccessMode(PropertyAccessMode.Field);
             });
-            
-            builder.Entity<Domain.Entities.Linkman>(c =>
+
+            builder.Entity<Linkman>(c =>
             {
                 c.ToTable("Linkman");
                 c.ConfigureByConvention();

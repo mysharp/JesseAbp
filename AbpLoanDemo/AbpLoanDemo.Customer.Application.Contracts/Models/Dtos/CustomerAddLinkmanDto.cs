@@ -1,7 +1,4 @@
-﻿
-using System;
-
-namespace AbpLoanDemo.Customer.Application.Contracts.Models.Dtos
+﻿namespace AbpLoanDemo.Customer.Application.Contracts.Models.Dtos
 {
     public class CustomerAddLinkmanDto
     {

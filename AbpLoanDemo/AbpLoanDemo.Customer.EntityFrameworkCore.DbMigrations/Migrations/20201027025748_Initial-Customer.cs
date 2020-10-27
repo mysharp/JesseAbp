@@ -8,10 +8,10 @@ namespace AbpLoanDemo.Customer.EntityFrameworkCore.DbMigrations.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Customer",
-                columns: table => new
+                "Customer",
+                table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
+                    Id = table.Column<Guid>(),
                     ExtraProperties = table.Column<string>(nullable: true),
                     ConcurrencyStamp = table.Column<string>(maxLength: 40, nullable: true),
                     Name = table.Column<string>(nullable: true),
@@ -19,16 +19,13 @@ namespace AbpLoanDemo.Customer.EntityFrameworkCore.DbMigrations.Migrations
                     Address = table.Column<string>(nullable: true),
                     IdNo = table.Column<string>(nullable: true)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Customer", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_Customer", x => x.Id); });
 
             migrationBuilder.CreateTable(
-                name: "Linkman",
-                columns: table => new
+                "Linkman",
+                table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
+                    Id = table.Column<Guid>(),
                     Name = table.Column<string>(nullable: true),
                     Phone = table.Column<string>(nullable: true),
                     IdNo = table.Column<string>(nullable: true),
@@ -38,26 +35,26 @@ namespace AbpLoanDemo.Customer.EntityFrameworkCore.DbMigrations.Migrations
                 {
                     table.PrimaryKey("PK_Linkman", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Linkman_Customer_CustomerId",
-                        column: x => x.CustomerId,
-                        principalTable: "Customer",
-                        principalColumn: "Id",
+                        "FK_Linkman_Customer_CustomerId",
+                        x => x.CustomerId,
+                        "Customer",
+                        "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Linkman_CustomerId",
-                table: "Linkman",
-                column: "CustomerId");
+                "IX_Linkman_CustomerId",
+                "Linkman",
+                "CustomerId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Linkman");
+                "Linkman");
 
             migrationBuilder.DropTable(
-                name: "Customer");
+                "Customer");
         }
     }
 }

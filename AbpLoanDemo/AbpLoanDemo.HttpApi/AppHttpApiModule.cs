@@ -31,7 +31,8 @@ namespace AbpLoanDemo.HttpApi
                 options.ConventionalControllers.Create(typeof(AppLoanApplicationModule).Assembly);
             });
 
-            context.Services.AddMediatR(typeof(CustomerChangedDomainEventHandler), typeof(LoanRequestAddedDomainEventHandler));
+            context.Services.AddMediatR(typeof(CustomerChangedDomainEventHandler),
+                typeof(LoanRequestAddedDomainEventHandler));
 
             ConfigureSwaggerServices(context.Services);
         }

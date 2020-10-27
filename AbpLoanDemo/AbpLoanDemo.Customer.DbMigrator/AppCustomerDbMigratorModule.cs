@@ -5,9 +5,9 @@ using Volo.Abp.Modularity;
 
 namespace AbpLoanDemo.Customer.DbMigrator
 {
-    [DependsOn(typeof(AbpAutofacModule), typeof(AppCustomerDomainModule), typeof(AppCustomerEntityFrameworkCoreDbMigrationModule))]
+    [DependsOn(typeof(AbpAutofacModule), typeof(AppCustomerDomainModule),
+        typeof(AppCustomerEntityFrameworkCoreDbMigrationModule))]
     public class AppCustomerDbMigratorModule : AbpModule
     {
-        
     }
 }

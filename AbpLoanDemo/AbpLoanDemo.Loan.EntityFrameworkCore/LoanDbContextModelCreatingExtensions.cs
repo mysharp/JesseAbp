@@ -1,4 +1,4 @@
-﻿using System;
+﻿using AbpLoanDemo.Loan.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp;
 using Volo.Abp.EntityFrameworkCore.Modeling;
@@ -11,7 +11,7 @@ namespace AbpLoanDemo.Loan.EntityFrameworkCore
         {
             Check.NotNull(builder, nameof(builder));
 
-            builder.Entity<Domain.Entities.LoanRequest>(c =>
+            builder.Entity<LoanRequest>(c =>
             {
                 c.ToTable("LoanRequest");
                 c.ConfigureByConvention();
@@ -19,11 +19,11 @@ namespace AbpLoanDemo.Loan.EntityFrameworkCore
                 c.Property(p => p.Score).HasColumnType("decimal(18,2)").HasDefaultValue(0);
                 c.Property(p => p.Amount).HasColumnType("decimal(18,2)").HasDefaultValue(0);
 
-                c.Metadata.FindNavigation(nameof(Domain.Entities.LoanRequest.Partners))
+                c.Metadata.FindNavigation(nameof(LoanRequest.Partners))
                     .SetPropertyAccessMode(PropertyAccessMode.Field);
             });
 
-            builder.Entity<Domain.Entities.Applier>(c =>
+            builder.Entity<Applier>(c =>
             {
                 c.ToTable("Applier");
                 c.ConfigureByConvention();
@@ -33,7 +33,7 @@ namespace AbpLoanDemo.Loan.EntityFrameworkCore
                 c.Property(p => p.IdNo).HasMaxLength(50).IsRequired(false);
             });
 
-            builder.Entity<Domain.Entities.Guarantee>(c =>
+            builder.Entity<Guarantee>(c =>
             {
                 c.ToTable("Guarantee");
                 c.ConfigureByConvention();

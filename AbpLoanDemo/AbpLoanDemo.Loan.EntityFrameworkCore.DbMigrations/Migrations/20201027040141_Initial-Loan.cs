@@ -8,28 +8,25 @@ namespace AbpLoanDemo.Loan.EntityFrameworkCore.DbMigrations.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Guarantee",
-                columns: table => new
+                "Guarantee",
+                table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
-                    Name = table.Column<string>(maxLength: 100, nullable: false),
+                    Id = table.Column<Guid>(),
+                    Name = table.Column<string>(maxLength: 100),
                     Cost = table.Column<decimal>(nullable: false, defaultValue: 0m),
                     ExpiryDate = table.Column<DateTime>(nullable: true)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Guarantee", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_Guarantee", x => x.Id); });
 
             migrationBuilder.CreateTable(
-                name: "LoanRequest",
-                columns: table => new
+                "LoanRequest",
+                table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
+                    Id = table.Column<Guid>(),
                     ExtraProperties = table.Column<string>(nullable: true),
                     ConcurrencyStamp = table.Column<string>(maxLength: 40, nullable: true),
                     ApplierId = table.Column<Guid>(nullable: true),
-                    Status = table.Column<int>(nullable: false),
+                    Status = table.Column<int>(),
                     Score = table.Column<decimal>(nullable: false, defaultValue: 0m),
                     GuaranteeId = table.Column<Guid>(nullable: true),
                     Amount = table.Column<decimal>(nullable: false, defaultValue: 0m)
@@ -38,20 +35,20 @@ namespace AbpLoanDemo.Loan.EntityFrameworkCore.DbMigrations.Migrations
                 {
                     table.PrimaryKey("PK_LoanRequest", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_LoanRequest_Guarantee_GuaranteeId",
-                        column: x => x.GuaranteeId,
-                        principalTable: "Guarantee",
-                        principalColumn: "Id",
+                        "FK_LoanRequest_Guarantee_GuaranteeId",
+                        x => x.GuaranteeId,
+                        "Guarantee",
+                        "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Applier",
-                columns: table => new
+                "Applier",
+                table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
-                    CustomerId = table.Column<Guid>(nullable: false),
-                    Name = table.Column<string>(maxLength: 100, nullable: false),
+                    Id = table.Column<Guid>(),
+                    CustomerId = table.Column<Guid>(),
+                    Name = table.Column<string>(maxLength: 100),
                     Phone = table.Column<string>(maxLength: 50, nullable: true),
                     IdNo = table.Column<string>(maxLength: 50, nullable: true),
                     LoanRequestId = table.Column<Guid>(nullable: true)
@@ -60,33 +57,33 @@ namespace AbpLoanDemo.Loan.EntityFrameworkCore.DbMigrations.Migrations
                 {
                     table.PrimaryKey("PK_Applier", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Applier_LoanRequest_LoanRequestId",
-                        column: x => x.LoanRequestId,
-                        principalTable: "LoanRequest",
-                        principalColumn: "Id",
+                        "FK_Applier_LoanRequest_LoanRequestId",
+                        x => x.LoanRequestId,
+                        "LoanRequest",
+                        "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Applier_LoanRequestId",
-                table: "Applier",
-                column: "LoanRequestId");
+                "IX_Applier_LoanRequestId",
+                "Applier",
+                "LoanRequestId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_LoanRequest_ApplierId",
-                table: "LoanRequest",
-                column: "ApplierId");
+                "IX_LoanRequest_ApplierId",
+                "LoanRequest",
+                "ApplierId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_LoanRequest_GuaranteeId",
-                table: "LoanRequest",
-                column: "GuaranteeId");
+                "IX_LoanRequest_GuaranteeId",
+                "LoanRequest",
+                "GuaranteeId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_LoanRequest_Applier_ApplierId",
-                table: "LoanRequest",
-                column: "ApplierId",
-                principalTable: "Applier",
+                "FK_LoanRequest_Applier_ApplierId",
+                "LoanRequest",
+                "ApplierId",
+                "Applier",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
         }
@@ -94,17 +91,17 @@ namespace AbpLoanDemo.Loan.EntityFrameworkCore.DbMigrations.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Applier_LoanRequest_LoanRequestId",
-                table: "Applier");
+                "FK_Applier_LoanRequest_LoanRequestId",
+                "Applier");
 
             migrationBuilder.DropTable(
-                name: "LoanRequest");
+                "LoanRequest");
 
             migrationBuilder.DropTable(
-                name: "Applier");
+                "Applier");
 
             migrationBuilder.DropTable(
-                name: "Guarantee");
+                "Guarantee");
         }
     }
 }

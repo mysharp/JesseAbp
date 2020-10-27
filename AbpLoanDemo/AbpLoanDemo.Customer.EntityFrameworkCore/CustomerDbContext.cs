@@ -1,10 +1,9 @@
-﻿using AbpLoanDemo.Domain.Shared;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using AbpLoanDemo.Customer.Domain.Entities;
+using AbpLoanDemo.EntityFrameworkCore.Shared;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using AbpLoanDemo.EntityFrameworkCore.Shared;
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
 
@@ -22,7 +21,7 @@ namespace AbpLoanDemo.Customer.EntityFrameworkCore
 
         public DbSet<Domain.Entities.Customer> Customers { get; set; }
 
-        public DbSet<Domain.Entities.Linkman> Linkmen { get; set; }
+        public DbSet<Linkman> Linkmen { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -33,11 +32,11 @@ namespace AbpLoanDemo.Customer.EntityFrameworkCore
 
         public override async Task<int> SaveChangesAsync(
             bool acceptAllChangesOnSuccess,
-            CancellationToken cancellationToken = default(CancellationToken))
+            CancellationToken cancellationToken = default)
         {
             var result = await base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
 
-            await _mediator.DispatchDomainEventsAsync(this);
+            await _mediator.DispatchDomainEventsAsync(this, cancellationToken);
 
             return result;
         }

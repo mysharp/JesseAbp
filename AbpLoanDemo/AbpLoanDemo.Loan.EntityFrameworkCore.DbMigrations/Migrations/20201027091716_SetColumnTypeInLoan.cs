@@ -8,9 +8,9 @@ namespace AbpLoanDemo.Loan.EntityFrameworkCore.DbMigrations.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<DateTime>(
-                name: "ExpiryDate",
-                table: "Guarantee",
-                type: "date",
+                "ExpiryDate",
+                "Guarantee",
+                "date",
                 nullable: true,
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
@@ -20,9 +20,9 @@ namespace AbpLoanDemo.Loan.EntityFrameworkCore.DbMigrations.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<DateTime>(
-                name: "ExpiryDate",
-                table: "Guarantee",
-                type: "datetime2",
+                "ExpiryDate",
+                "Guarantee",
+                "datetime2",
                 nullable: true,
                 oldClrType: typeof(DateTime),
                 oldType: "date",
