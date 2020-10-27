@@ -16,8 +16,8 @@ namespace AbpLoanDemo.Loan.EntityFrameworkCore
                 c.ToTable("LoanRequest");
                 c.ConfigureByConvention();
 
-                c.Property(p => p.Score).HasDefaultValue(0);
-                c.Property(p => p.Amount).HasDefaultValue(0);
+                c.Property(p => p.Score).HasColumnType("decimal(18,2)").HasDefaultValue(0);
+                c.Property(p => p.Amount).HasColumnType("decimal(18,2)").HasDefaultValue(0);
 
                 c.Metadata.FindNavigation(nameof(Domain.Entities.LoanRequest.Partners))
                     .SetPropertyAccessMode(PropertyAccessMode.Field);
@@ -39,8 +39,8 @@ namespace AbpLoanDemo.Loan.EntityFrameworkCore
                 c.ConfigureByConvention();
 
                 c.Property(p => p.Name).HasMaxLength(100).IsRequired();
-                c.Property(p => p.Cost).HasDefaultValue(0);
-                c.Property(p => p.ExpiryDate).IsRequired(false);
+                c.Property(p => p.Cost).HasColumnType("decimal(18,2)").HasDefaultValue(0);
+                c.Property(p => p.ExpiryDate).HasColumnType("date").IsRequired(false);
             });
         }
     }

@@ -14,6 +14,12 @@ namespace AbpLoanDemo.Customer.EntityFrameworkCore
             {
                 c.ToTable("Customer");
                 c.ConfigureByConvention();
+
+                c.Property(p => p.Name).HasMaxLength(100).IsRequired();
+                c.Property(p => p.Phone).HasMaxLength(50).IsRequired(false);
+                c.Property(p => p.Address).IsRequired(false);
+                c.Property(p => p.IdNo).HasMaxLength(50).IsRequired(false);
+
                 c.Metadata.FindNavigation(nameof(Domain.Entities.Customer.Linkman))
                     .SetPropertyAccessMode(PropertyAccessMode.Field);
             });
@@ -22,6 +28,10 @@ namespace AbpLoanDemo.Customer.EntityFrameworkCore
             {
                 c.ToTable("Linkman");
                 c.ConfigureByConvention();
+
+                c.Property(p => p.Name).HasMaxLength(100).IsRequired();
+                c.Property(p => p.Phone).HasMaxLength(50).IsRequired(false);
+                c.Property(p => p.IdNo).HasMaxLength(50).IsRequired(false);
             });
         }
     }

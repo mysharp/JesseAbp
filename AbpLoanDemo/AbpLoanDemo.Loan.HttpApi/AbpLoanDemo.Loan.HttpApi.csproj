@@ -22,6 +22,7 @@
     <ProjectReference Include="..\AbpLoanDemo.Loan.Application\AbpLoanDemo.Loan.Application.csproj" />
     <ProjectReference Include="..\AbpLoanDemo.Loan.Domain\AbpLoanDemo.Loan.Domain.csproj" />
     <ProjectReference Include="..\AbpLoanDemo.Loan.EntityFrameworkCore.DbMigrations\AbpLoanDemo.Loan.EntityFrameworkCore.DbMigrations.csproj" />
+    <ProjectReference Include="..\AbpLoanDemo.Loan.EntityFrameworkCore\AbpLoanDemo.Loan.EntityFrameworkCore.csproj" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>

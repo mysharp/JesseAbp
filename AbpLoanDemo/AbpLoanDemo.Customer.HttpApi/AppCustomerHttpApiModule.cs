@@ -1,7 +1,6 @@
 ﻿using AbpLoanDemo.Customer.Application;
 using AbpLoanDemo.Customer.Application.DomainEventHandlers;
 using AbpLoanDemo.Customer.EntityFrameworkCore;
-using AbpLoanDemo.Customer.EntityFrameworkCore.DbMigrations;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;

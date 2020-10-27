@@ -19,9 +19,11 @@
   <ItemGroup>
     <ProjectReference Include="..\AbpLoanDemo.Customer.Application\AbpLoanDemo.Customer.Application.csproj" />
     <ProjectReference Include="..\AbpLoanDemo.Customer.Domain\AbpLoanDemo.Customer.Domain.csproj" />
+    <ProjectReference Include="..\AbpLoanDemo.Customer.EntityFrameworkCore.DbMigrations\AbpLoanDemo.Customer.EntityFrameworkCore.DbMigrations.csproj" />
     <ProjectReference Include="..\AbpLoanDemo.Customer.EntityFrameworkCore\AbpLoanDemo.Customer.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\AbpLoanDemo.Loan.Application\AbpLoanDemo.Loan.Application.csproj" />
     <ProjectReference Include="..\AbpLoanDemo.Loan.Domain\AbpLoanDemo.Loan.Domain.csproj" />
+    <ProjectReference Include="..\AbpLoanDemo.Loan.EntityFrameworkCore.DbMigrations\AbpLoanDemo.Loan.EntityFrameworkCore.DbMigrations.csproj" />
     <ProjectReference Include="..\AbpLoanDemo.Loan.EntityFrameworkCore\AbpLoanDemo.Loan.EntityFrameworkCore.csproj" />
   </ItemGroup>
 

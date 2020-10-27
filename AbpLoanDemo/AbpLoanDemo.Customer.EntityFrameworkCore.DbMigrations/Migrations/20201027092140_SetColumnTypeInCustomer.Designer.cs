@@ -4,15 +4,17 @@ using AbpLoanDemo.Customer.EntityFrameworkCore.DbMigrations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Volo.Abp.EntityFrameworkCore;
 
 namespace AbpLoanDemo.Customer.EntityFrameworkCore.DbMigrations.Migrations
 {
     [DbContext(typeof(CustomerDbMigrationContext))]
-    partial class CustomerDbMigrationContextModelSnapshot : ModelSnapshot
+    [Migration("20201027092140_SetColumnTypeInCustomer")]
+    partial class SetColumnTypeInCustomer
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
