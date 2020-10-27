@@ -12,14 +12,14 @@ namespace AbpLoanDemo.Loan.Application.Contracts
 
         Task<List<LoanRequestDto>> GetListAsync();
 
-        Task<LoanRequestDto> CreateAsync(LoanRequestCreateDto loanRequest);
+        Task<LoanRequestDto> CreateAsync(LoanRequestCreateDto dto);
 
-        Task<LoanRequestDto> AddPartner(Guid id, Guid partnerId);
+        Task<LoanRequestDto> AddPartner(Guid id, LoanRequestAddPartnerDto dto);
 
-        Task<LoanRequestDto> SetScoreAsync(Guid id, decimal score);
+        Task<LoanRequestDto> UpdateScoreAsync(Guid id, LoanRequestSetScoreDto score);
 
-        Task<LoanRequestDto> SetGuaranteeAsync(Guid id, GuaranteeDto guarantee);
+        Task<LoanRequestDto> UpdateGuaranteeAsync(Guid id, LoanRequestSetGuaranteeDto guarantee);
 
-        Task<LoanRequestDto> SetAmountAsync(Guid id, decimal amount);
+        Task<LoanRequestDto> UpdateAmountAsync(Guid id, LoanRequestSetAmountDto dto);
     }
 }

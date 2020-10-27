@@ -11,7 +11,10 @@ namespace AbpLoanDemo.Loan.Application.DomainEventHandlers
     {
         public Task Handle(LoanRequestGuaranteeAddedDomainEvent notification, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            Console.WriteLine(
+                $"Add Guarantee: {notification.LoanRequest.Guarantee.Name} to LoanRequest: {notification.LoanRequest.Id}");
+
+            return Task.CompletedTask;
         }
     }
 }

@@ -3,7 +3,7 @@ using System;
 
 namespace AbpLoanDemo.Customer.Application.Contracts.Models.Dtos
 {
-    public class LinkmanAddDto
+    public class CustomerAddLinkmanDto
     {
         public string Name { get; set; }
 

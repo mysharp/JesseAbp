@@ -12,6 +12,7 @@ namespace AbpLoanDemo.Loan.Application.Profiles
             CreateMap<LoanRequest, LoanRequestCreateDto>().ReverseMap();
             CreateMap<Applier, ApplierDto>().ReverseMap();
             CreateMap<Guarantee, GuaranteeDto>().ReverseMap();
+            CreateMap<Guarantee, LoanRequestSetGuaranteeDto>().ReverseMap();
         }
     }
 }

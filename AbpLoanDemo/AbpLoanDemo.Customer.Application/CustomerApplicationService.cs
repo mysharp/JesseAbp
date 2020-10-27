@@ -46,11 +46,11 @@ namespace AbpLoanDemo.Customer.Application
             return ObjectMapper.Map<Domain.Entities.Customer, CustomerDto>(result);
         }
 
-        public async Task<CustomerDto> AddLinkmanAsync(Guid id, LinkmanAddDto linkman)
+        public async Task<CustomerDto> AddLinkmanAsync(Guid id, CustomerAddLinkmanDto linkman)
         {
             var customer = await _customerRepository.GetAsync(c => c.Id == id);
 
-            var linkmanEntity = ObjectMapper.Map<LinkmanAddDto, Linkman>(linkman);
+            var linkmanEntity = ObjectMapper.Map<CustomerAddLinkmanDto, Linkman>(linkman);
             customer.AddLinkman(linkmanEntity);
 
             var updateCustomerResult = await _customerRepository.UpdateAsync(customer, true);

@@ -10,7 +10,10 @@ namespace AbpLoanDemo.Loan.Application.DomainEventHandlers
     {
         public Task Handle(LoanRequestAmountedDomainEvent notification, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            Console.WriteLine(
+                $"Amounted LoanRequest: {notification.LoanRequest.Id}");
+
+            return Task.CompletedTask;
         }
     }
 }

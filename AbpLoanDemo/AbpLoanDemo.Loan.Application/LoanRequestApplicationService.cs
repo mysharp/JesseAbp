@@ -33,14 +33,14 @@ namespace AbpLoanDemo.Loan.Application
 
         public async Task<List<LoanRequestDto>> GetListAsync()
         {
-            var loanRequests = await _loanRequestRepository.GetListAsync();
+            var loanRequests = await _loanRequestRepository.GetListAsync(true);
 
             return ObjectMapper.Map<List<LoanRequest>, List<LoanRequestDto>>(loanRequests);
         }
 
-        public async Task<LoanRequestDto> CreateAsync(LoanRequestCreateDto loanRequest)
+        public async Task<LoanRequestDto> CreateAsync(LoanRequestCreateDto dto)
         {
-            var customer = await CustomerApplicationService.GetAsync(loanRequest.CustomerId);
+            var customer = await CustomerApplicationService.GetAsync(dto.CustomerId);
             if (customer == null)
                 throw new AbpException("Customer is missing.");
 
@@ -53,9 +53,9 @@ namespace AbpLoanDemo.Loan.Application
             return ObjectMapper.Map<LoanRequest, LoanRequestDto>(entity);
         }
 
-        public async Task<LoanRequestDto> AddPartner(Guid id, Guid partnerId)
+        public async Task<LoanRequestDto> AddPartner(Guid id, LoanRequestAddPartnerDto dto)
         {
-            var customer = await CustomerApplicationService.GetAsync(partnerId);
+            var customer = await CustomerApplicationService.GetAsync(dto.PartnerId);
             if (customer == null)
                 throw new AbpException("Partner is missing.");
 
@@ -68,19 +68,19 @@ namespace AbpLoanDemo.Loan.Application
             return ObjectMapper.Map<LoanRequest, LoanRequestDto>(loanRequest);
         }
 
-        public async Task<LoanRequestDto> SetScoreAsync(Guid id, decimal score)
+        public async Task<LoanRequestDto> UpdateScoreAsync(Guid id, LoanRequestSetScoreDto dto)
         {
             var loanRequest = await _loanRequestRepository.GetAsync(p => p.Id == id);
-            loanRequest.SetScore(score);
+            loanRequest.SetScore(dto.Score);
 
             loanRequest = await _loanRequestRepository.UpdateAsync(loanRequest, true);
 
             return ObjectMapper.Map<LoanRequest, LoanRequestDto>(loanRequest);
         }
 
-        public async Task<LoanRequestDto> SetGuaranteeAsync(Guid id, GuaranteeDto guarantee)
+        public async Task<LoanRequestDto> UpdateGuaranteeAsync(Guid id, LoanRequestSetGuaranteeDto dto)
         {
-            var guaranteeEntity = ObjectMapper.Map<GuaranteeDto, Guarantee>(guarantee);
+            var guaranteeEntity = ObjectMapper.Map<LoanRequestSetGuaranteeDto, Guarantee>(dto);
 
             var loanRequest = await _loanRequestRepository.GetAsync(p => p.Id == id);
             loanRequest.SetGuarantee(guaranteeEntity);
@@ -90,10 +90,10 @@ namespace AbpLoanDemo.Loan.Application
             return ObjectMapper.Map<LoanRequest, LoanRequestDto>(loanRequest);
         }
 
-        public async Task<LoanRequestDto> SetAmountAsync(Guid id, decimal amount)
+        public async Task<LoanRequestDto> UpdateAmountAsync(Guid id, LoanRequestSetAmountDto dto)
         {
             var loanRequest = await _loanRequestRepository.GetAsync(p => p.Id == id);
-            loanRequest.SetAmount(amount);
+            loanRequest.SetAmount(dto.Amount);
 
             loanRequest = await _loanRequestRepository.UpdateAsync(loanRequest, true);
 

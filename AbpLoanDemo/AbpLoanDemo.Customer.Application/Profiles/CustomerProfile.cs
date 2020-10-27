@@ -15,7 +15,7 @@ namespace AbpLoanDemo.Customer.Application.Profiles
             CreateMap<Domain.Entities.Customer, CustomerCreateDto>().ReverseMap();
 
             CreateMap<Linkman, LinkmanDto>().ReverseMap();
-            CreateMap<Linkman, LinkmanAddDto>().ReverseMap();
+            CreateMap<Linkman, CustomerAddLinkmanDto>().ReverseMap();
         }
     }
 }

@@ -14,6 +14,6 @@ namespace AbpLoanDemo.Customer.Application.Contracts
 
         Task<CustomerDto> CreateAsync(CustomerCreateDto customer);
 
-        Task<CustomerDto> AddLinkmanAsync(Guid id, LinkmanAddDto linkman);
+        Task<CustomerDto> AddLinkmanAsync(Guid id, CustomerAddLinkmanDto linkman);
     }
 }

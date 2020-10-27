@@ -16,7 +16,11 @@ namespace AbpLoanDemo.Loan.EntityFrameworkCore
             {
                 options.AddDefaultRepositories();
 
-                options.Entity<LoanRequest>(opt => opt.DefaultWithDetailsFunc = q => q.Include(c => c.Partners));
+                options.Entity<LoanRequest>(
+                    opt => opt.DefaultWithDetailsFunc = 
+                        q => q.Include(c => c.Applier)
+                            .Include(c=>c.Guarantee)
+                            .Include(c => c.Partners));
             });
 
             Configure<AbpDbContextOptions>(options =>
