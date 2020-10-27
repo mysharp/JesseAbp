@@ -17,7 +17,6 @@ namespace AbpLoanDemo.Customer.HttpApi
     [DependsOn(typeof(AbpAutofacModule))]
     [DependsOn(typeof(AppCustomerApplicationModule))]
     [DependsOn(typeof(AppCustomerEntityFrameworkCoreModule))]
-    [DependsOn(typeof(AppCustomerEntityFrameworkCoreDbMigrationModule))]
     public class AppCustomerHttpApiModule : AbpModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
