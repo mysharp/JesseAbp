@@ -1,5 +1,7 @@
 ﻿using AbpLoanDemo.Customer.Application;
 using AbpLoanDemo.Customer.Application.DomainEventHandlers;
+using AbpLoanDemo.Customer.EntityFrameworkCore;
+using AbpLoanDemo.Customer.EntityFrameworkCore.DbMigrations;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,6 +16,8 @@ namespace AbpLoanDemo.Customer.HttpApi
     [DependsOn(typeof(AbpAspNetCoreMvcModule))]
     [DependsOn(typeof(AbpAutofacModule))]
     [DependsOn(typeof(AppCustomerApplicationModule))]
+    [DependsOn(typeof(AppCustomerEntityFrameworkCoreModule))]
+    [DependsOn(typeof(AppCustomerEntityFrameworkCoreDbMigrationModule))]
     public class AppCustomerHttpApiModule : AbpModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
