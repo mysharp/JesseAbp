@@ -11,8 +11,8 @@ using Volo.Abp.EntityFrameworkCore;
 namespace AbpLoanDemo.Customer.EntityFrameworkCore.DbMigrations.Migrations
 {
     [DbContext(typeof(CustomerDbMigrationContext))]
-    [Migration("20201027012743_Initial")]
-    partial class Initial
+    [Migration("20201027025748_Initial-Customer")]
+    partial class InitialCustomer
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

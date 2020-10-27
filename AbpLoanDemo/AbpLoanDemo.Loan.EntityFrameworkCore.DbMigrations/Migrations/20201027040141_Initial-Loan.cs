@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AbpLoanDemo.Loan.EntityFrameworkCore.DbMigrations.Migrations
 {
-    public partial class Initial : Migration
+    public partial class InitialLoan : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,7 +11,10 @@ namespace AbpLoanDemo.Loan.EntityFrameworkCore.DbMigrations.Migrations
                 name: "Guarantee",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false)
+                    Id = table.Column<Guid>(nullable: false),
+                    Name = table.Column<string>(maxLength: 100, nullable: false),
+                    Cost = table.Column<decimal>(nullable: false, defaultValue: 0m),
+                    ExpiryDate = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -25,10 +28,11 @@ namespace AbpLoanDemo.Loan.EntityFrameworkCore.DbMigrations.Migrations
                     Id = table.Column<Guid>(nullable: false),
                     ExtraProperties = table.Column<string>(nullable: true),
                     ConcurrencyStamp = table.Column<string>(maxLength: 40, nullable: true),
+                    ApplierId = table.Column<Guid>(nullable: true),
                     Status = table.Column<int>(nullable: false),
-                    Score = table.Column<decimal>(nullable: false),
+                    Score = table.Column<decimal>(nullable: false, defaultValue: 0m),
                     GuaranteeId = table.Column<Guid>(nullable: true),
-                    Amount = table.Column<decimal>(nullable: false)
+                    Amount = table.Column<decimal>(nullable: false, defaultValue: 0m)
                 },
                 constraints: table =>
                 {
@@ -46,6 +50,10 @@ namespace AbpLoanDemo.Loan.EntityFrameworkCore.DbMigrations.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
+                    CustomerId = table.Column<Guid>(nullable: false),
+                    Name = table.Column<string>(maxLength: 100, nullable: false),
+                    Phone = table.Column<string>(maxLength: 50, nullable: true),
+                    IdNo = table.Column<string>(maxLength: 50, nullable: true),
                     LoanRequestId = table.Column<Guid>(nullable: true)
                 },
                 constraints: table =>
@@ -65,18 +73,35 @@ namespace AbpLoanDemo.Loan.EntityFrameworkCore.DbMigrations.Migrations
                 column: "LoanRequestId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_LoanRequest_ApplierId",
+                table: "LoanRequest",
+                column: "ApplierId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_LoanRequest_GuaranteeId",
                 table: "LoanRequest",
                 column: "GuaranteeId");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_LoanRequest_Applier_ApplierId",
+                table: "LoanRequest",
+                column: "ApplierId",
+                principalTable: "Applier",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Restrict);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Applier");
+            migrationBuilder.DropForeignKey(
+                name: "FK_Applier_LoanRequest_LoanRequestId",
+                table: "Applier");
 
             migrationBuilder.DropTable(
                 name: "LoanRequest");
+
+            migrationBuilder.DropTable(
+                name: "Applier");
 
             migrationBuilder.DropTable(
                 name: "Guarantee");

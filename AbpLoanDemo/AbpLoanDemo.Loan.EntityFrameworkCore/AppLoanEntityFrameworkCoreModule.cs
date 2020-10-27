@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using AbpLoanDemo.Loan.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore.SqlServer;
 using Volo.Abp.Modularity;
@@ -13,6 +15,8 @@ namespace AbpLoanDemo.Loan.EntityFrameworkCore
             context.Services.AddAbpDbContext<LoanDbContext>(options =>
             {
                 options.AddDefaultRepositories();
+
+                options.Entity<LoanRequest>(opt => opt.DefaultWithDetailsFunc = q => q.Include(c => c.Partners));
             });
 
             Configure<AbpDbContextOptions>(options =>

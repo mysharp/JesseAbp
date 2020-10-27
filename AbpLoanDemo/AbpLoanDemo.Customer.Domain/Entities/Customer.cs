@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using AbpLoanDemo.Customer.Domain.Events;
+﻿using AbpLoanDemo.Customer.Domain.Events;
 using AbpLoanDemo.Domain.Shared;
+using System;
+using System.Collections.Generic;
 
 namespace AbpLoanDemo.Customer.Domain.Entities
 {
@@ -24,7 +23,7 @@ namespace AbpLoanDemo.Customer.Domain.Entities
 
         public string IdNo { get; private set; }
 
-        public ReadOnlyCollection<Linkman> Linkman => _linkman.AsReadOnly();
+        public IReadOnlyCollection<Linkman> Linkman => _linkman;
 
         public void SetAddress(string address)
         {

@@ -53,6 +53,21 @@ namespace AbpLoanDemo.Loan.Application
             return ObjectMapper.Map<LoanRequest, LoanRequestDto>(entity);
         }
 
+        public async Task<LoanRequestDto> AddPartner(Guid id, Guid partnerId)
+        {
+            var customer = await CustomerApplicationService.GetAsync(partnerId);
+            if (customer == null)
+                throw new AbpException("Partner is missing.");
+
+            var loanRequest = await _loanRequestRepository.GetAsync(p => p.Id == id);
+            var partner = new Applier(customer.Id, customer.Name, customer.Phone, customer.IdNo);
+            loanRequest.AddPartner(partner);
+
+            loanRequest = await _loanRequestRepository.UpdateAsync(loanRequest, true);
+
+            return ObjectMapper.Map<LoanRequest, LoanRequestDto>(loanRequest);
+        }
+
         public async Task<LoanRequestDto> SetScoreAsync(Guid id, decimal score)
         {
             var loanRequest = await _loanRequestRepository.GetAsync(p => p.Id == id);

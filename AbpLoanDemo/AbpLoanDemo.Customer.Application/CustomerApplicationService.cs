@@ -26,14 +26,14 @@ namespace AbpLoanDemo.Customer.Application
         /// <returns></returns>
         public async Task<CustomerDto> GetAsync(Guid id)
         {
-            var customer = await _customerRepository.GetAsync(p => p.Id == id);
+            var customer = await _customerRepository.GetAsync(p => p.Id == id,true);
 
             return ObjectMapper.Map<Domain.Entities.Customer, CustomerDto>(customer);
         }
 
         public async Task<List<CustomerDto>> GetListAsync()
         {
-            var customers = await _customerRepository.GetListAsync();
+            var customers = await _customerRepository.GetListAsync(true);
 
             return ObjectMapper.Map<List<Domain.Entities.Customer>, List<CustomerDto>>(customers);
         }
@@ -46,19 +46,14 @@ namespace AbpLoanDemo.Customer.Application
             return ObjectMapper.Map<Domain.Entities.Customer, CustomerDto>(result);
         }
 
-        public async Task<CustomerDto> AddLinkmanAsync(Guid id, LinkmanDto linkman)
+        public async Task<CustomerDto> AddLinkmanAsync(Guid id, LinkmanAddDto linkman)
         {
             var customer = await _customerRepository.GetAsync(c => c.Id == id);
 
-            var linkmanEntity = ObjectMapper.Map<LinkmanDto, Linkman>(linkman);
+            var linkmanEntity = ObjectMapper.Map<LinkmanAddDto, Linkman>(linkman);
             customer.AddLinkman(linkmanEntity);
 
             var updateCustomerResult = await _customerRepository.UpdateAsync(customer, true);
-
-            //if (linkman.Name == "jesse")
-            //{
-            //    throw new System.InvalidOperationException("Duplicated name jesse");
-            //}
 
             return ObjectMapper.Map<Domain.Entities.Customer, CustomerDto>(updateCustomerResult);
         }

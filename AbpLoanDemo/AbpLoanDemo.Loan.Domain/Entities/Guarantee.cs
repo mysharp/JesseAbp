@@ -20,6 +20,6 @@ namespace AbpLoanDemo.Loan.Domain.Entities
 
         public decimal Cost { get; private set; }
 
-        public DateTime ExpiryDate { get; private set; }
+        public DateTime? ExpiryDate { get; private set; }
     }
 }

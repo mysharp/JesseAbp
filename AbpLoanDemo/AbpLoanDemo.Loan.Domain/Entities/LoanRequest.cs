@@ -7,6 +7,8 @@ namespace AbpLoanDemo.Loan.Domain.Entities
 {
     public class LoanRequest : AggregateRootWithEvents<Guid>
     {
+        private readonly List<Applier> _partners = new List<Applier>();
+
         private LoanRequest()
         {
         }
@@ -18,9 +20,9 @@ namespace AbpLoanDemo.Loan.Domain.Entities
             AddDomainEvent(new LoanRequestAddedDomainEvent(this));
         }
 
-        public Applier Applier { get; }
+        public Applier Applier { get; private set; }
 
-        public IEnumerable<Applier> Partners { get; private set; }
+        public IReadOnlyCollection<Applier> Partners => _partners;
 
         public LoanStatus Status { get; private set; }
 
@@ -29,6 +31,11 @@ namespace AbpLoanDemo.Loan.Domain.Entities
         public Guarantee Guarantee { get; private set; }
 
         public decimal Amount { get; private set; }
+
+        public void AddPartner(Applier partner)
+        {
+            _partners.Add(partner);
+        }
 
         public void SetScore(decimal score)
         {

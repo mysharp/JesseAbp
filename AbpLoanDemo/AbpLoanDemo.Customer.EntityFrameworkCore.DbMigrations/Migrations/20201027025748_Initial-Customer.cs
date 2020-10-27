@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AbpLoanDemo.Customer.EntityFrameworkCore.DbMigrations.Migrations
 {
-    public partial class Initial : Migration
+    public partial class InitialCustomer : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

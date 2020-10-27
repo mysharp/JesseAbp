@@ -14,8 +14,10 @@ namespace AbpLoanDemo.Customer.EntityFrameworkCore
             {
                 c.ToTable("Customer");
                 c.ConfigureByConvention();
+                c.Metadata.FindNavigation(nameof(Domain.Entities.Customer.Linkman))
+                    .SetPropertyAccessMode(PropertyAccessMode.Field);
             });
-
+            
             builder.Entity<Domain.Entities.Linkman>(c =>
             {
                 c.ToTable("Linkman");

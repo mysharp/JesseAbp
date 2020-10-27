@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore.SqlServer;
 using Volo.Abp.Modularity;
@@ -13,6 +14,11 @@ namespace AbpLoanDemo.Customer.EntityFrameworkCore
             context.Services.AddAbpDbContext<CustomerDbContext>(options =>
             {
                 options.AddDefaultRepositories();
+
+                options.Entity<Domain.Entities.Customer>(opt =>
+                    {
+                        opt.DefaultWithDetailsFunc = q => q.Include(c => c.Linkman);
+                    });
             });
 
             Configure<AbpDbContextOptions>(options =>

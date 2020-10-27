@@ -8,8 +8,14 @@ namespace AbpLoanDemo.Customer.Application.Profiles
     {
         public CustomerProfile()
         {
-            CreateMap<Domain.Entities.Customer, CustomerDto>().ReverseMap();
+            CreateMap<Domain.Entities.Customer, CustomerDto>()
+                .ForMember(x => x.Linkmen, x => x.MapFrom(p => p.Linkman))
+                .ReverseMap();
+
+            CreateMap<Domain.Entities.Customer, CustomerCreateDto>().ReverseMap();
+
             CreateMap<Linkman, LinkmanDto>().ReverseMap();
+            CreateMap<Linkman, LinkmanAddDto>().ReverseMap();
         }
     }
 }

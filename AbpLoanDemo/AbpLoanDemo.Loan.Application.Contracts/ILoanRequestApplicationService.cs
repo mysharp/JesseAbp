@@ -14,6 +14,8 @@ namespace AbpLoanDemo.Loan.Application.Contracts
 
         Task<LoanRequestDto> CreateAsync(LoanRequestCreateDto loanRequest);
 
+        Task<LoanRequestDto> AddPartner(Guid id, Guid partnerId);
+
         Task<LoanRequestDto> SetScoreAsync(Guid id, decimal score);
 
         Task<LoanRequestDto> SetGuaranteeAsync(Guid id, GuaranteeDto guarantee);

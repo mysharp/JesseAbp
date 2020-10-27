@@ -11,8 +11,8 @@ using Volo.Abp.EntityFrameworkCore;
 namespace AbpLoanDemo.Loan.EntityFrameworkCore.DbMigrations.Migrations
 {
     [DbContext(typeof(LoanDbMigrationContext))]
-    [Migration("20201027015834_Initial")]
-    partial class Initial
+    [Migration("20201027040141_Initial-Loan")]
+    partial class InitialLoan
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -29,8 +29,24 @@ namespace AbpLoanDemo.Loan.EntityFrameworkCore.DbMigrations.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid>("CustomerId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("IdNo")
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
                     b.Property<Guid?>("LoanRequestId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
                     b.HasKey("Id");
 
@@ -45,6 +61,19 @@ namespace AbpLoanDemo.Loan.EntityFrameworkCore.DbMigrations.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<decimal>("Cost")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("decimal(18,2)")
+                        .HasDefaultValue(0m);
+
+                    b.Property<DateTime?>("ExpiryDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
+
                     b.HasKey("Id");
 
                     b.ToTable("Guarantee");
@@ -57,7 +86,12 @@ namespace AbpLoanDemo.Loan.EntityFrameworkCore.DbMigrations.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(18,2)");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("decimal(18,2)")
+                        .HasDefaultValue(0m);
+
+                    b.Property<Guid?>("ApplierId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -73,12 +107,16 @@ namespace AbpLoanDemo.Loan.EntityFrameworkCore.DbMigrations.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("Score")
-                        .HasColumnType("decimal(18,2)");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("decimal(18,2)")
+                        .HasDefaultValue(0m);
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ApplierId");
 
                     b.HasIndex("GuaranteeId");
 
@@ -94,6 +132,10 @@ namespace AbpLoanDemo.Loan.EntityFrameworkCore.DbMigrations.Migrations
 
             modelBuilder.Entity("AbpLoanDemo.Loan.Domain.Entities.LoanRequest", b =>
                 {
+                    b.HasOne("AbpLoanDemo.Loan.Domain.Entities.Applier", "Applier")
+                        .WithMany()
+                        .HasForeignKey("ApplierId");
+
                     b.HasOne("AbpLoanDemo.Loan.Domain.Entities.Guarantee", "Guarantee")
                         .WithMany()
                         .HasForeignKey("GuaranteeId");
