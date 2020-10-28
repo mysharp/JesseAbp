@@ -6,6 +6,7 @@ using AbpLoanDemo.Customer.Application.Contracts.Models.Dtos;
 using AbpLoanDemo.Customer.Domain.Entities;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Domain.Repositories;
+using Volo.Abp.Uow;
 
 namespace AbpLoanDemo.Customer.Application
 {
@@ -40,7 +41,10 @@ namespace AbpLoanDemo.Customer.Application
         public async Task<CustomerDto> CreateAsync(CustomerCreateDto customer)
         {
             var entity = ObjectMapper.Map<CustomerCreateDto, Domain.Entities.Customer>(customer);
+
+            using var uow = UnitOfWorkManager.Begin(new AbpUnitOfWorkOptions());
             var result = await _customerRepository.InsertAsync(entity);
+            await uow.SaveChangesAsync();
 
             return ObjectMapper.Map<Domain.Entities.Customer, CustomerDto>(result);
         }
@@ -52,7 +56,8 @@ namespace AbpLoanDemo.Customer.Application
             var linkmanEntity = ObjectMapper.Map<CustomerAddLinkmanDto, Linkman>(linkman);
             customer.AddLinkman(linkmanEntity);
 
-            var updateCustomerResult = await _customerRepository.UpdateAsync(customer, true);
+            var updateCustomerResult = await _customerRepository.UpdateAsync(customer, false);
+            await CurrentUnitOfWork.SaveChangesAsync();
 
             return ObjectMapper.Map<Domain.Entities.Customer, CustomerDto>(updateCustomerResult);
         }

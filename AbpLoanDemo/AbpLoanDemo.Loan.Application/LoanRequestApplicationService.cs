@@ -8,18 +8,21 @@ using AbpLoanDemo.Loan.Domain.Entities;
 using Volo.Abp;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Domain.Repositories;
+using Volo.Abp.Uow;
 
 namespace AbpLoanDemo.Loan.Application
 {
     public class LoanRequestApplicationService : ApplicationService, ILoanRequestApplicationService
     {
         private readonly IRepository<LoanRequest> _loanRequestRepository;
+        private readonly IUnitOfWorkManager _uowManager;
 
         public LoanRequestApplicationService(ICustomerApplicationService customerApplicationService,
-            IRepository<LoanRequest> loanRequestRepository)
+            IRepository<LoanRequest> loanRequestRepository, IUnitOfWorkManager uowManager)
         {
             CustomerApplicationService = customerApplicationService;
             _loanRequestRepository = loanRequestRepository;
+            _uowManager = uowManager;
         }
 
         protected ICustomerApplicationService CustomerApplicationService { get; set; }
@@ -48,7 +51,9 @@ namespace AbpLoanDemo.Loan.Application
 
             var loadRequest = new LoanRequest(applier);
 
+            using var uow = _uowManager.Begin(new AbpUnitOfWorkOptions());
             var entity = await _loanRequestRepository.InsertAsync(loadRequest, true);
+            await uow.SaveChangesAsync();
 
             return ObjectMapper.Map<LoanRequest, LoanRequestDto>(entity);
         }
@@ -63,7 +68,9 @@ namespace AbpLoanDemo.Loan.Application
             var partner = new Applier(customer.Id, customer.Name, customer.Phone, customer.IdNo);
             loanRequest.AddPartner(partner);
 
+            using var uow = _uowManager.Begin(new AbpUnitOfWorkOptions());
             loanRequest = await _loanRequestRepository.UpdateAsync(loanRequest, true);
+            await uow.SaveChangesAsync();
 
             return ObjectMapper.Map<LoanRequest, LoanRequestDto>(loanRequest);
         }
@@ -73,7 +80,9 @@ namespace AbpLoanDemo.Loan.Application
             var loanRequest = await _loanRequestRepository.GetAsync(p => p.Id == id);
             loanRequest.SetScore(dto.Score);
 
+            using var uow = _uowManager.Begin(new AbpUnitOfWorkOptions());
             loanRequest = await _loanRequestRepository.UpdateAsync(loanRequest, true);
+            await uow.SaveChangesAsync();
 
             return ObjectMapper.Map<LoanRequest, LoanRequestDto>(loanRequest);
         }
@@ -85,7 +94,9 @@ namespace AbpLoanDemo.Loan.Application
             var loanRequest = await _loanRequestRepository.GetAsync(p => p.Id == id);
             loanRequest.SetGuarantee(guaranteeEntity);
 
-            loanRequest = await _loanRequestRepository.UpdateAsync(loanRequest, true);
+            using var uow = _uowManager.Begin(new AbpUnitOfWorkOptions());
+            loanRequest = await _loanRequestRepository.UpdateAsync(loanRequest, false);
+            await uow.SaveChangesAsync();
 
             return ObjectMapper.Map<LoanRequest, LoanRequestDto>(loanRequest);
         }
@@ -95,7 +106,9 @@ namespace AbpLoanDemo.Loan.Application
             var loanRequest = await _loanRequestRepository.GetAsync(p => p.Id == id);
             loanRequest.SetAmount(dto.Amount);
 
-            loanRequest = await _loanRequestRepository.UpdateAsync(loanRequest, true);
+            using var uow = _uowManager.Begin(new AbpUnitOfWorkOptions());
+            loanRequest = await _loanRequestRepository.UpdateAsync(loanRequest, false);
+            await uow.SaveChangesAsync();
 
             return ObjectMapper.Map<LoanRequest, LoanRequestDto>(loanRequest);
         }
