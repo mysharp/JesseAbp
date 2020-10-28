@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.9">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc" Version="3.3.0" />
+    <PackageReference Include="Volo.Abp.Autofac" Version="3.3.0" />
+    <PackageReference Include="Volo.Abp.Core" Version="3.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AbpLoanDemo.Customer.Application\AbpLoanDemo.Customer.Application.csproj" />
+    <ProjectReference Include="..\AbpLoanDemo.Customer.Domain\AbpLoanDemo.Customer.Domain.csproj" />
+    <ProjectReference Include="..\AbpLoanDemo.Customer.EntityFrameworkCore.DbMigrations\AbpLoanDemo.Customer.EntityFrameworkCore.DbMigrations.csproj" />
+    <ProjectReference Include="..\AbpLoanDemo.Customer.EntityFrameworkCore\AbpLoanDemo.Customer.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\AbpLoanDemo.Loan.Application\AbpLoanDemo.Loan.Application.csproj" />
+    <ProjectReference Include="..\AbpLoanDemo.Loan.Domain\AbpLoanDemo.Loan.Domain.csproj" />
+    <ProjectReference Include="..\AbpLoanDemo.Loan.EntityFrameworkCore.DbMigrations\AbpLoanDemo.Loan.EntityFrameworkCore.DbMigrations.csproj" />
+    <ProjectReference Include="..\AbpLoanDemo.Loan.EntityFrameworkCore\AbpLoanDemo.Loan.EntityFrameworkCore.csproj" />
+  </ItemGroup>
+
+
+</Project>

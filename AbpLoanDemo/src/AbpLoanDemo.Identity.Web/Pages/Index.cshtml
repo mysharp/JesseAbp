@@ -1,0 +1,33 @@
+﻿@page
+@using Microsoft.AspNetCore.Mvc.Localization
+@using AbpLoanDemo.Identity.Localization
+@using Volo.Abp.Users
+@model AbpLoanDemo.Identity.Web.Pages.IndexModel
+@inject IHtmlLocalizer<IdentityResource> L
+@inject ICurrentUser CurrentUser
+@section styles {
+    <abp-style-bundle>
+        <abp-style src="/Pages/Index.css" />
+    </abp-style-bundle>
+}
+@section scripts {
+    <abp-script-bundle>
+        <abp-script src="/Pages/Index.js" />
+    </abp-script-bundle>
+}
+<div class="container">
+    <div class="p-5 text-center">
+        <div class="badge badge-success h5 rounded mb-4 " role="alert">
+            <h5 class="m-1"> <i class="fas fa-rocket"></i> Congratulations, <strong>Identity</strong> is successfully running!</h5>
+        </div>
+        <h1>Welcome to the Application</h1>
+
+        <p class="lead px-lg-5 mx-lg-5">@L["LongWelcomeMessage"]</p>
+
+        @if (!CurrentUser.IsAuthenticated)
+        {
+            <a abp-button="Primary" href="~/Account/Login" ><i class="fa fa-sign-in"></i> @L["Login"]</a>
+        }
+
+    </div>
+</div>

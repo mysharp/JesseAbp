@@ -3,21 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Customer.Domain", "AbpLoanDemo.Customer.Domain\AbpLoanDemo.Customer.Domain.csproj", "{B5F30EED-AAB1-47B0-A82E-4507AB1B51F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Customer.Domain", "src\AbpLoanDemo.Customer.Domain\AbpLoanDemo.Customer.Domain.csproj", "{B5F30EED-AAB1-47B0-A82E-4507AB1B51F6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Loan.Domain", "AbpLoanDemo.Loan.Domain\AbpLoanDemo.Loan.Domain.csproj", "{5C7B00FC-A932-4C40-8933-2F6AE8844D29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Loan.Domain", "src\AbpLoanDemo.Loan.Domain\AbpLoanDemo.Loan.Domain.csproj", "{5C7B00FC-A932-4C40-8933-2F6AE8844D29}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Domain.Shared", "AbpLoanDemo.Domain.Shared\AbpLoanDemo.Domain.Shared.csproj", "{7F1B05CA-1D99-43DB-8E2D-A47331AA44B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Domain.Shared", "src\AbpLoanDemo.Domain.Shared\AbpLoanDemo.Domain.Shared.csproj", "{7F1B05CA-1D99-43DB-8E2D-A47331AA44B8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Customer.Application.Contracts", "AbpLoanDemo.Customer.Application.Contracts\AbpLoanDemo.Customer.Application.Contracts.csproj", "{ED1F3184-2BFC-4143-A4E5-2BA5B3DE1D1C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Customer.Application.Contracts", "src\AbpLoanDemo.Customer.Application.Contracts\AbpLoanDemo.Customer.Application.Contracts.csproj", "{ED1F3184-2BFC-4143-A4E5-2BA5B3DE1D1C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Customer.Application", "AbpLoanDemo.Customer.Application\AbpLoanDemo.Customer.Application.csproj", "{B06DE9F7-C101-4283-8B86-5D98769F5EEB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Customer.Application", "src\AbpLoanDemo.Customer.Application\AbpLoanDemo.Customer.Application.csproj", "{B06DE9F7-C101-4283-8B86-5D98769F5EEB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Customer.HttpApi", "AbpLoanDemo.Customer.HttpApi\AbpLoanDemo.Customer.HttpApi.csproj", "{E89E215D-E62E-4A6E-8F34-5715D9A89724}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Customer.HttpApi", "src\AbpLoanDemo.Customer.HttpApi\AbpLoanDemo.Customer.HttpApi.csproj", "{E89E215D-E62E-4A6E-8F34-5715D9A89724}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Customer.EntityFrameworkCore", "AbpLoanDemo.Customer.EntityFrameworkCore\AbpLoanDemo.Customer.EntityFrameworkCore.csproj", "{0C24C2B6-A05B-4502-9B39-BE325E417ADD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Customer.EntityFrameworkCore", "src\AbpLoanDemo.Customer.EntityFrameworkCore\AbpLoanDemo.Customer.EntityFrameworkCore.csproj", "{0C24C2B6-A05B-4502-9B39-BE325E417ADD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Customer.EntityFrameworkCore.DbMigrations", "AbpLoanDemo.Customer.EntityFrameworkCore.DbMigrations\AbpLoanDemo.Customer.EntityFrameworkCore.DbMigrations.csproj", "{BC499CBD-568A-42C7-AC02-5A735C6FEACA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Customer.EntityFrameworkCore.DbMigrations", "src\AbpLoanDemo.Customer.EntityFrameworkCore.DbMigrations\AbpLoanDemo.Customer.EntityFrameworkCore.DbMigrations.csproj", "{BC499CBD-568A-42C7-AC02-5A735C6FEACA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{6556921E-91A7-4237-9FC7-00BB3E6CE0B5}"
 EndProject
@@ -27,21 +27,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Customer", "Customer", "{A9
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Loan", "Loan", "{4F4C7CC2-3C1F-4CE3-9506-49072A16E3D8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Loan.Application.Contracts", "AbpLoanDemo.Loan.Application.Contracts\AbpLoanDemo.Loan.Application.Contracts.csproj", "{3C2054D5-7927-41AA-85DA-834348685CC8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Loan.Application.Contracts", "src\AbpLoanDemo.Loan.Application.Contracts\AbpLoanDemo.Loan.Application.Contracts.csproj", "{3C2054D5-7927-41AA-85DA-834348685CC8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Loan.Application", "AbpLoanDemo.Loan.Application\AbpLoanDemo.Loan.Application.csproj", "{4780121D-2A96-4B29-8678-A37F58647BC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Loan.Application", "src\AbpLoanDemo.Loan.Application\AbpLoanDemo.Loan.Application.csproj", "{4780121D-2A96-4B29-8678-A37F58647BC1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Loan.HttpApi", "AbpLoanDemo.Loan.HttpApi\AbpLoanDemo.Loan.HttpApi.csproj", "{6035B5C3-8942-47ED-89DC-6998AC892DD3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Loan.HttpApi", "src\AbpLoanDemo.Loan.HttpApi\AbpLoanDemo.Loan.HttpApi.csproj", "{6035B5C3-8942-47ED-89DC-6998AC892DD3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Loan.EntityFrameworkCore", "AbpLoanDemo.Loan.EntityFrameworkCore\AbpLoanDemo.Loan.EntityFrameworkCore.csproj", "{D0BBF6A2-E55B-49B0-961A-0CAAED038864}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Loan.EntityFrameworkCore", "src\AbpLoanDemo.Loan.EntityFrameworkCore\AbpLoanDemo.Loan.EntityFrameworkCore.csproj", "{D0BBF6A2-E55B-49B0-961A-0CAAED038864}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Loan.EntityFrameworkCore.DbMigrations", "AbpLoanDemo.Loan.EntityFrameworkCore.DbMigrations\AbpLoanDemo.Loan.EntityFrameworkCore.DbMigrations.csproj", "{CE9D1263-2B0A-40A7-A8DB-C351F598864F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Loan.EntityFrameworkCore.DbMigrations", "src\AbpLoanDemo.Loan.EntityFrameworkCore.DbMigrations\AbpLoanDemo.Loan.EntityFrameworkCore.DbMigrations.csproj", "{CE9D1263-2B0A-40A7-A8DB-C351F598864F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Customer.DbMigrator", "AbpLoanDemo.Customer.DbMigrator\AbpLoanDemo.Customer.DbMigrator.csproj", "{A51A0E81-0E00-4FCF-968F-C94B46EC8FCB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Customer.DbMigrator", "src\AbpLoanDemo.Customer.DbMigrator\AbpLoanDemo.Customer.DbMigrator.csproj", "{A51A0E81-0E00-4FCF-968F-C94B46EC8FCB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Loan.DbMigrator", "AbpLoanDemo.Loan.DbMigrator\AbpLoanDemo.Loan.DbMigrator.csproj", "{79CE1CDE-56D6-4665-B997-8E2B7643821F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Loan.DbMigrator", "src\AbpLoanDemo.Loan.DbMigrator\AbpLoanDemo.Loan.DbMigrator.csproj", "{79CE1CDE-56D6-4665-B997-8E2B7643821F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.EntityFrameworkCore.Shared", "AbpLoanDemo.EntityFrameworkCore.Shared\AbpLoanDemo.EntityFrameworkCore.Shared.csproj", "{FB6159D9-AEFF-470F-807C-23E464C0031B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.EntityFrameworkCore.Shared", "src\AbpLoanDemo.EntityFrameworkCore.Shared\AbpLoanDemo.EntityFrameworkCore.Shared.csproj", "{FB6159D9-AEFF-470F-807C-23E464C0031B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Monolith", "Monolith", "{385AB759-2C02-416D-809C-750D1F0756E4}"
 EndProject
@@ -49,13 +49,53 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{AFBB4E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MicroService", "MicroService", "{C7B6DEB0-7060-4AF1-A7E4-F3654D17E93A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbpLoanDemo.HttpApi", "AbpLoanDemo.HttpApi\AbpLoanDemo.HttpApi.csproj", "{216F93A5-0E96-4F6E-96C1-AA9670AE7100}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.HttpApi", "src\AbpLoanDemo.HttpApi\AbpLoanDemo.HttpApi.csproj", "{216F93A5-0E96-4F6E-96C1-AA9670AE7100}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{6D40B080-C67E-4886-960A-614E99419AB2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DbMigrator", "DbMigrator", "{6D46CEAC-218D-41AB-9EAA-8B7797FE693D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbpLoanDemo.DbMigrator", "AbpLoanDemo.DbMigrator\AbpLoanDemo.DbMigrator.csproj", "{A84CC098-D78E-4188-BB11-8BD516C007E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.DbMigrator", "src\AbpLoanDemo.DbMigrator\AbpLoanDemo.DbMigrator.csproj", "{A84CC098-D78E-4188-BB11-8BD516C007E3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{A6F1CE0E-0618-47AC-B0DA-9A11A70982EC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9A2410E0-DEF0-4A68-96D7-4017CB7299B4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{C71EE233-58B7-453C-8D92-4BD842C94482}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Identity.Domain.Shared", "src\AbpLoanDemo.Identity.Domain.Shared\AbpLoanDemo.Identity.Domain.Shared.csproj", "{499CE8EB-2851-4A97-8EBD-D823BB27656C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Identity.Domain", "src\AbpLoanDemo.Identity.Domain\AbpLoanDemo.Identity.Domain.csproj", "{9724DF0D-0310-4D35-8C03-A5964733486E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Identity.Application.Contracts", "src\AbpLoanDemo.Identity.Application.Contracts\AbpLoanDemo.Identity.Application.Contracts.csproj", "{3F1F3924-7535-4F41-A5B2-E0F6FF5C0B6A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Identity.Application", "src\AbpLoanDemo.Identity.Application\AbpLoanDemo.Identity.Application.csproj", "{A4897A61-E7C8-4946-87E7-C53B5DA06835}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Identity.EntityFrameworkCore", "src\AbpLoanDemo.Identity.EntityFrameworkCore\AbpLoanDemo.Identity.EntityFrameworkCore.csproj", "{AAB7EAA6-A2C6-4A25-8680-E0EC5EE91A5D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Identity.EntityFrameworkCore.DbMigrations", "src\AbpLoanDemo.Identity.EntityFrameworkCore.DbMigrations\AbpLoanDemo.Identity.EntityFrameworkCore.DbMigrations.csproj", "{37453CA9-9ECB-4BD6-83C4-58D671288C1D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Identity.HttpApi", "src\AbpLoanDemo.Identity.HttpApi\AbpLoanDemo.Identity.HttpApi.csproj", "{A248A7D5-6B3C-4E88-8AF4-17AC7D5E941F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Identity.HttpApi.Client", "src\AbpLoanDemo.Identity.HttpApi.Client\AbpLoanDemo.Identity.HttpApi.Client.csproj", "{B01BDF29-CBA7-4195-83F3-6C74850A58A2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Identity.DbMigrator", "src\AbpLoanDemo.Identity.DbMigrator\AbpLoanDemo.Identity.DbMigrator.csproj", "{2F496332-E0FA-4248-B916-CA365F0C55DD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Identity.Web", "src\AbpLoanDemo.Identity.Web\AbpLoanDemo.Identity.Web.csproj", "{5F9D5BDE-217D-4DF0-9252-1856E3D76697}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{C05846C5-3F11-4F3B-B84B-F9EAEEF3C4B0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Identity.TestBase", "test\AbpLoanDemo.Identity.TestBase\AbpLoanDemo.Identity.TestBase.csproj", "{ED35EEF9-0F96-497E-874D-B0A5CC1ED8C0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Identity.Domain.Tests", "test\AbpLoanDemo.Identity.Domain.Tests\AbpLoanDemo.Identity.Domain.Tests.csproj", "{19DA3991-0693-40BB-8057-CB28C2904774}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Identity.EntityFrameworkCore.Tests", "test\AbpLoanDemo.Identity.EntityFrameworkCore.Tests\AbpLoanDemo.Identity.EntityFrameworkCore.Tests.csproj", "{01CE9E87-44F2-4832-8B9F-E0E700CBA956}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Identity.HttpApi.Client.ConsoleTestApp", "test\AbpLoanDemo.Identity.HttpApi.Client.ConsoleTestApp\AbpLoanDemo.Identity.HttpApi.Client.ConsoleTestApp.csproj", "{6FC4C342-6698-4911-A7D9-765EF3E8EC8D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Identity.Application.Tests", "test\AbpLoanDemo.Identity.Application.Tests\AbpLoanDemo.Identity.Application.Tests.csproj", "{F460878A-E8D8-4AAD-977C-928E963AF754}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbpLoanDemo.Identity.Web.Tests", "test\AbpLoanDemo.Identity.Web.Tests\AbpLoanDemo.Identity.Web.Tests.csproj", "{9283DE08-313C-4D2E-BB88-DA8E1D923D61}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -135,6 +175,70 @@ Global
 		{A84CC098-D78E-4188-BB11-8BD516C007E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A84CC098-D78E-4188-BB11-8BD516C007E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A84CC098-D78E-4188-BB11-8BD516C007E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{499CE8EB-2851-4A97-8EBD-D823BB27656C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{499CE8EB-2851-4A97-8EBD-D823BB27656C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{499CE8EB-2851-4A97-8EBD-D823BB27656C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{499CE8EB-2851-4A97-8EBD-D823BB27656C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9724DF0D-0310-4D35-8C03-A5964733486E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9724DF0D-0310-4D35-8C03-A5964733486E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9724DF0D-0310-4D35-8C03-A5964733486E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9724DF0D-0310-4D35-8C03-A5964733486E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F1F3924-7535-4F41-A5B2-E0F6FF5C0B6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F1F3924-7535-4F41-A5B2-E0F6FF5C0B6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F1F3924-7535-4F41-A5B2-E0F6FF5C0B6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F1F3924-7535-4F41-A5B2-E0F6FF5C0B6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4897A61-E7C8-4946-87E7-C53B5DA06835}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4897A61-E7C8-4946-87E7-C53B5DA06835}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4897A61-E7C8-4946-87E7-C53B5DA06835}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4897A61-E7C8-4946-87E7-C53B5DA06835}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAB7EAA6-A2C6-4A25-8680-E0EC5EE91A5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAB7EAA6-A2C6-4A25-8680-E0EC5EE91A5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAB7EAA6-A2C6-4A25-8680-E0EC5EE91A5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAB7EAA6-A2C6-4A25-8680-E0EC5EE91A5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37453CA9-9ECB-4BD6-83C4-58D671288C1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37453CA9-9ECB-4BD6-83C4-58D671288C1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37453CA9-9ECB-4BD6-83C4-58D671288C1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37453CA9-9ECB-4BD6-83C4-58D671288C1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A248A7D5-6B3C-4E88-8AF4-17AC7D5E941F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A248A7D5-6B3C-4E88-8AF4-17AC7D5E941F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A248A7D5-6B3C-4E88-8AF4-17AC7D5E941F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A248A7D5-6B3C-4E88-8AF4-17AC7D5E941F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B01BDF29-CBA7-4195-83F3-6C74850A58A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B01BDF29-CBA7-4195-83F3-6C74850A58A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B01BDF29-CBA7-4195-83F3-6C74850A58A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B01BDF29-CBA7-4195-83F3-6C74850A58A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F496332-E0FA-4248-B916-CA365F0C55DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F496332-E0FA-4248-B916-CA365F0C55DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F496332-E0FA-4248-B916-CA365F0C55DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F496332-E0FA-4248-B916-CA365F0C55DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F9D5BDE-217D-4DF0-9252-1856E3D76697}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F9D5BDE-217D-4DF0-9252-1856E3D76697}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F9D5BDE-217D-4DF0-9252-1856E3D76697}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F9D5BDE-217D-4DF0-9252-1856E3D76697}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED35EEF9-0F96-497E-874D-B0A5CC1ED8C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED35EEF9-0F96-497E-874D-B0A5CC1ED8C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED35EEF9-0F96-497E-874D-B0A5CC1ED8C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED35EEF9-0F96-497E-874D-B0A5CC1ED8C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19DA3991-0693-40BB-8057-CB28C2904774}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19DA3991-0693-40BB-8057-CB28C2904774}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19DA3991-0693-40BB-8057-CB28C2904774}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19DA3991-0693-40BB-8057-CB28C2904774}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01CE9E87-44F2-4832-8B9F-E0E700CBA956}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01CE9E87-44F2-4832-8B9F-E0E700CBA956}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01CE9E87-44F2-4832-8B9F-E0E700CBA956}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01CE9E87-44F2-4832-8B9F-E0E700CBA956}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FC4C342-6698-4911-A7D9-765EF3E8EC8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FC4C342-6698-4911-A7D9-765EF3E8EC8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FC4C342-6698-4911-A7D9-765EF3E8EC8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FC4C342-6698-4911-A7D9-765EF3E8EC8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F460878A-E8D8-4AAD-977C-928E963AF754}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F460878A-E8D8-4AAD-977C-928E963AF754}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F460878A-E8D8-4AAD-977C-928E963AF754}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F460878A-E8D8-4AAD-977C-928E963AF754}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9283DE08-313C-4D2E-BB88-DA8E1D923D61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9283DE08-313C-4D2E-BB88-DA8E1D923D61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9283DE08-313C-4D2E-BB88-DA8E1D923D61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9283DE08-313C-4D2E-BB88-DA8E1D923D61}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -148,6 +252,8 @@ Global
 		{E89E215D-E62E-4A6E-8F34-5715D9A89724} = {6D40B080-C67E-4886-960A-614E99419AB2}
 		{0C24C2B6-A05B-4502-9B39-BE325E417ADD} = {A9EBB0A6-194F-4F43-919A-74BB617FC9D8}
 		{BC499CBD-568A-42C7-AC02-5A735C6FEACA} = {A9EBB0A6-194F-4F43-919A-74BB617FC9D8}
+		{6556921E-91A7-4237-9FC7-00BB3E6CE0B5} = {9A2410E0-DEF0-4A68-96D7-4017CB7299B4}
+		{D3E10005-207F-4FCD-97F6-6534BD700136} = {9A2410E0-DEF0-4A68-96D7-4017CB7299B4}
 		{A9EBB0A6-194F-4F43-919A-74BB617FC9D8} = {D3E10005-207F-4FCD-97F6-6534BD700136}
 		{4F4C7CC2-3C1F-4CE3-9506-49072A16E3D8} = {D3E10005-207F-4FCD-97F6-6534BD700136}
 		{3C2054D5-7927-41AA-85DA-834348685CC8} = {4F4C7CC2-3C1F-4CE3-9506-49072A16E3D8}
@@ -159,11 +265,30 @@ Global
 		{79CE1CDE-56D6-4665-B997-8E2B7643821F} = {6D46CEAC-218D-41AB-9EAA-8B7797FE693D}
 		{FB6159D9-AEFF-470F-807C-23E464C0031B} = {6556921E-91A7-4237-9FC7-00BB3E6CE0B5}
 		{385AB759-2C02-416D-809C-750D1F0756E4} = {AFBB4E93-6575-41AE-8AEE-06768C6B3C4F}
+		{AFBB4E93-6575-41AE-8AEE-06768C6B3C4F} = {9A2410E0-DEF0-4A68-96D7-4017CB7299B4}
 		{C7B6DEB0-7060-4AF1-A7E4-F3654D17E93A} = {AFBB4E93-6575-41AE-8AEE-06768C6B3C4F}
 		{216F93A5-0E96-4F6E-96C1-AA9670AE7100} = {385AB759-2C02-416D-809C-750D1F0756E4}
 		{6D40B080-C67E-4886-960A-614E99419AB2} = {C7B6DEB0-7060-4AF1-A7E4-F3654D17E93A}
 		{6D46CEAC-218D-41AB-9EAA-8B7797FE693D} = {C7B6DEB0-7060-4AF1-A7E4-F3654D17E93A}
 		{A84CC098-D78E-4188-BB11-8BD516C007E3} = {385AB759-2C02-416D-809C-750D1F0756E4}
+		{A6F1CE0E-0618-47AC-B0DA-9A11A70982EC} = {D3E10005-207F-4FCD-97F6-6534BD700136}
+		{499CE8EB-2851-4A97-8EBD-D823BB27656C} = {A6F1CE0E-0618-47AC-B0DA-9A11A70982EC}
+		{9724DF0D-0310-4D35-8C03-A5964733486E} = {A6F1CE0E-0618-47AC-B0DA-9A11A70982EC}
+		{3F1F3924-7535-4F41-A5B2-E0F6FF5C0B6A} = {A6F1CE0E-0618-47AC-B0DA-9A11A70982EC}
+		{A4897A61-E7C8-4946-87E7-C53B5DA06835} = {A6F1CE0E-0618-47AC-B0DA-9A11A70982EC}
+		{AAB7EAA6-A2C6-4A25-8680-E0EC5EE91A5D} = {A6F1CE0E-0618-47AC-B0DA-9A11A70982EC}
+		{37453CA9-9ECB-4BD6-83C4-58D671288C1D} = {A6F1CE0E-0618-47AC-B0DA-9A11A70982EC}
+		{A248A7D5-6B3C-4E88-8AF4-17AC7D5E941F} = {A6F1CE0E-0618-47AC-B0DA-9A11A70982EC}
+		{B01BDF29-CBA7-4195-83F3-6C74850A58A2} = {A6F1CE0E-0618-47AC-B0DA-9A11A70982EC}
+		{2F496332-E0FA-4248-B916-CA365F0C55DD} = {6D46CEAC-218D-41AB-9EAA-8B7797FE693D}
+		{5F9D5BDE-217D-4DF0-9252-1856E3D76697} = {C7B6DEB0-7060-4AF1-A7E4-F3654D17E93A}
+		{C05846C5-3F11-4F3B-B84B-F9EAEEF3C4B0} = {C71EE233-58B7-453C-8D92-4BD842C94482}
+		{ED35EEF9-0F96-497E-874D-B0A5CC1ED8C0} = {C05846C5-3F11-4F3B-B84B-F9EAEEF3C4B0}
+		{19DA3991-0693-40BB-8057-CB28C2904774} = {C05846C5-3F11-4F3B-B84B-F9EAEEF3C4B0}
+		{01CE9E87-44F2-4832-8B9F-E0E700CBA956} = {C05846C5-3F11-4F3B-B84B-F9EAEEF3C4B0}
+		{6FC4C342-6698-4911-A7D9-765EF3E8EC8D} = {C05846C5-3F11-4F3B-B84B-F9EAEEF3C4B0}
+		{F460878A-E8D8-4AAD-977C-928E963AF754} = {C05846C5-3F11-4F3B-B84B-F9EAEEF3C4B0}
+		{9283DE08-313C-4D2E-BB88-DA8E1D923D61} = {C05846C5-3F11-4F3B-B84B-F9EAEEF3C4B0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {43053EBB-E9C6-4197-BF5F-C04171EBE765}
