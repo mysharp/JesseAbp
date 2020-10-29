@@ -1,0 +1,12 @@
+{
+  "culture": "en",
+  "texts": {
+    "Permission:LoanStore": "Loan",
+    "Permission:LoanStore_LoanRequest": "Loan Request",
+    "Permission:LoanStore_LoanRequest_Create": "Request Loan",
+    "Permission:LoanStore_LoanRequest_AddPartner": "Add Partner",
+    "Permission:LoanStore_LoanRequest_UpdateScore": "Update Score",
+    "Permission:LoanStore_LoanRequest_UpdateGuarantee": "Update Guarantee",
+    "Permission:LoanStore_LoanRequest_UpdateAmount": "Update Amount"
+  }
+}

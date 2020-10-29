@@ -1,0 +1,12 @@
+{
+  "culture": "zh-Hans",
+  "texts": {
+    "Permission:LoanStore": "贷款",
+    "Permission:LoanStore_LoanRequest": "贷款申请",
+    "Permission:LoanStore_LoanRequest_Create": "申请贷款",
+    "Permission:LoanStore_LoanRequest_AddPartner": "添加合伙人",
+    "Permission:LoanStore_LoanRequest_UpdateScore": "更新信用评估",
+    "Permission:LoanStore_LoanRequest_UpdateGuarantee": "更新担保信息",
+    "Permission:LoanStore_LoanRequest_UpdateAmount": "更新贷款金额"
+  }
+}

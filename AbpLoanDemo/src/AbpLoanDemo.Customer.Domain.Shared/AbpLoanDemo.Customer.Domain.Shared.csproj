@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Localization\Customer\en.json" />
+    <None Remove="Localization\Customer\zh-Hans.json" />
+    <None Remove="Localization\Customer\zh-Hant.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\Customer\en.json" />
+    <EmbeddedResource Include="Localization\Customer\zh-Hans.json" />
+    <EmbeddedResource Include="Localization\Customer\zh-Hant.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Localization" Version="3.3.0" />
+  </ItemGroup>
+
+</Project>

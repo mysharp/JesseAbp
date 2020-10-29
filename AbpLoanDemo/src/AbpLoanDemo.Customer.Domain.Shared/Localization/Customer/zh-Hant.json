@@ -1,0 +1,9 @@
+{
+  "culture": "zh-Hant",
+  "texts": {
+    "Permission:CustomerStore": "顾客",
+    "Permission:CustomerStore_Customer": "顾客",
+    "Permission:CustomerStore_Customer_Create": "创建顾客",
+    "Permission:CustomerStore_Customer_AddLinkman": "添加顾客联系人"
+  }
+}

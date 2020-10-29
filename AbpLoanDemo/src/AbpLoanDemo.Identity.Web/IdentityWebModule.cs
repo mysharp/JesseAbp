@@ -1,4 +1,5 @@
 using AbpLoanDemo.Customer.Application.Contracts;
+using AbpLoanDemo.Customer.Domain.Shared;
 using AbpLoanDemo.Identity.EntityFrameworkCore;
 using AbpLoanDemo.Identity.Localization;
 using AbpLoanDemo.Identity.MultiTenancy;
@@ -12,6 +13,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using System;
 using System.IO;
+using AbpLoanDemo.Customer.Domain.Shared.Localization;
 using Volo.Abp;
 using Volo.Abp.Account.Web;
 using Volo.Abp.AspNetCore.Authentication.JwtBearer;
@@ -30,6 +32,7 @@ using Volo.Abp.TenantManagement.Web;
 using Volo.Abp.UI.Navigation;
 using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.VirtualFileSystem;
+using AbpLoanDemo.Loan.Domain.Shared;
 
 namespace AbpLoanDemo.Identity.Web
 {
@@ -46,7 +49,9 @@ namespace AbpLoanDemo.Identity.Web
         typeof(AbpAspNetCoreSerilogModule),
         typeof(AbpSwashbuckleModule),
         typeof(AppCustomerApplicationContractModule),
-        typeof(AppLoanApplicationContractModule)
+        typeof(AppLoanApplicationContractModule),
+        typeof(AppCustomerDomainSharedModule),
+        typeof(AppLoanDomainSharedModule)
         )]
     public class IdentityWebModule : AbpModule
     {
@@ -61,6 +66,16 @@ namespace AbpLoanDemo.Identity.Web
                     typeof(IdentityApplicationModule).Assembly,
                     typeof(IdentityApplicationContractsModule).Assembly,
                     typeof(IdentityWebModule).Assembly
+                );
+                
+                options.AddAssemblyResource(
+                    typeof(CustomerResource),
+                    typeof(AppCustomerDomainSharedModule).Assembly
+                );
+
+                options.AddAssemblyResource(
+                    typeof(LoanResource),
+                    typeof(AppLoanDomainSharedModule).Assembly
                 );
             });
         }
@@ -118,6 +133,10 @@ namespace AbpLoanDemo.Identity.Web
                     options.FileSets.ReplaceEmbeddedByPhysical<IdentityApplicationContractsModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}AbpLoanDemo.Identity.Application.Contracts"));
                     options.FileSets.ReplaceEmbeddedByPhysical<IdentityApplicationModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}AbpLoanDemo.Identity.Application"));
                     options.FileSets.ReplaceEmbeddedByPhysical<IdentityWebModule>(hostingEnvironment.ContentRootPath);
+
+                    options.FileSets.ReplaceEmbeddedByPhysical<AppCustomerDomainSharedModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}AbpLoanDemo.Customer.Domain.Shared"));
+
+                    options.FileSets.ReplaceEmbeddedByPhysical<AppLoanDomainSharedModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}AbpLoanDemo.Loan.Domain.Shared"));
                 });
             }
         }

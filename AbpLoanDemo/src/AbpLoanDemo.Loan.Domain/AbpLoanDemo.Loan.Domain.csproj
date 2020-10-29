@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AbpLoanDemo.Domain.Shared\AbpLoanDemo.Domain.Shared.csproj" />
+    <ProjectReference Include="..\AbpLoanDemo.Loan.Domain.Shared\AbpLoanDemo.Loan.Domain.Shared.csproj" />
   </ItemGroup>
 
 </Project>

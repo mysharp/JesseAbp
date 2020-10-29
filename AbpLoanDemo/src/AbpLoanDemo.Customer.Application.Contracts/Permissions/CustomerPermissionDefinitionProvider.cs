@@ -1,4 +1,5 @@
-﻿using Volo.Abp.Authorization.Permissions;
+﻿using AbpLoanDemo.Customer.Domain.Shared.Localization;
+using Volo.Abp.Authorization.Permissions;
 using Volo.Abp.Localization;
 using Volo.Abp.MultiTenancy;
 
@@ -19,7 +20,7 @@ namespace AbpLoanDemo.Customer.Application.Contracts.Permissions
 
         private LocalizableString L(string name)
         {
-            return null;
+            return LocalizableString.Create<CustomerResource>(name);
         }
     }
 }

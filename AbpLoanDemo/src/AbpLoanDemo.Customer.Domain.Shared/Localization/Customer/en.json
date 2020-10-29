@@ -1,0 +1,9 @@
+{
+  "culture": "en",
+  "texts": {
+    "Permission:CustomerStore": "Customer",
+    "Permission:CustomerStore_Customer": "Customer",
+    "Permission:CustomerStore_Customer_Create": "Create Customer",
+    "Permission:CustomerStore_Customer_AddLinkman": "Add Linkman to Customer"
+  }
+}
