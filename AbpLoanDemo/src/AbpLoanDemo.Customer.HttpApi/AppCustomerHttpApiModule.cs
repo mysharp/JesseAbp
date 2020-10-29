@@ -70,12 +70,12 @@ namespace AbpLoanDemo.Customer.HttpApi
             var app = context.GetApplicationBuilder();
             var env = context.GetEnvironment();
 
+            app.UseRouting();
+            
             app.UseAuthentication();
 
             app.UseJwtTokenMiddleware();
             app.UseAbpClaimsMap();
-
-            app.UseRouting();
 
             app.UseAuthorization();
 

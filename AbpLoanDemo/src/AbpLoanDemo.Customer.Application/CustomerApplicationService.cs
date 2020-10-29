@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using AbpLoanDemo.Customer.Application.Contracts;
+﻿using AbpLoanDemo.Customer.Application.Contracts;
 using AbpLoanDemo.Customer.Application.Contracts.Models.Dtos;
-using AbpLoanDemo.Customer.Application.Contracts.Permissions;
 using AbpLoanDemo.Customer.Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Domain.Repositories;
 using Volo.Abp.Security.Claims;
 using Volo.Abp.Uow;
-using Volo.Abp.Users;
 
 namespace AbpLoanDemo.Customer.Application
 {
