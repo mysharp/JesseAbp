@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using AbpLoanDemo.Customer.Application.Contracts;
 using AbpLoanDemo.Customer.Application.Contracts.Models.Dtos;
+using AbpLoanDemo.Customer.Application.Contracts.Permissions;
 using AbpLoanDemo.Customer.Domain.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Domain.Repositories;
 using Volo.Abp.Uow;
@@ -24,6 +26,7 @@ namespace AbpLoanDemo.Customer.Application
         /// <param name="id"></param>
         /// <remarks>参数名称需要为id，不然动态代理会无法识别</remarks>
         /// <returns></returns>
+        [Authorize(CustomerPermissions.Customer.Default)]
         public async Task<CustomerDto> GetAsync(Guid id)
         {
             var customer = await _customerRepository.GetAsync(p => p.Id == id);
@@ -31,6 +34,7 @@ namespace AbpLoanDemo.Customer.Application
             return ObjectMapper.Map<Domain.Entities.Customer, CustomerDto>(customer);
         }
 
+        [Authorize(CustomerPermissions.Customer.Default)]
         public async Task<List<CustomerDto>> GetListAsync()
         {
             var customers = await _customerRepository.GetListAsync(true);
@@ -38,6 +42,7 @@ namespace AbpLoanDemo.Customer.Application
             return ObjectMapper.Map<List<Domain.Entities.Customer>, List<CustomerDto>>(customers);
         }
 
+        [Authorize(CustomerPermissions.Customer.Create)]
         public async Task<CustomerDto> CreateAsync(CustomerCreateDto customer)
         {
             var entity = ObjectMapper.Map<CustomerCreateDto, Domain.Entities.Customer>(customer);
@@ -49,6 +54,7 @@ namespace AbpLoanDemo.Customer.Application
             return ObjectMapper.Map<Domain.Entities.Customer, CustomerDto>(result);
         }
 
+        [Authorize(CustomerPermissions.Customer.AddLinkman)]
         public async Task<CustomerDto> AddLinkmanAsync(Guid id, CustomerAddLinkmanDto linkman)
         {
             var customer = await _customerRepository.GetAsync(c => c.Id == id);

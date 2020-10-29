@@ -1,38 +1,34 @@
-using System;
-using System.IO;
+using AbpLoanDemo.Customer.Application.Contracts;
+using AbpLoanDemo.Identity.EntityFrameworkCore;
+using AbpLoanDemo.Identity.Localization;
+using AbpLoanDemo.Identity.MultiTenancy;
+using AbpLoanDemo.Identity.Web.Menus;
+using AbpLoanDemo.Loan.Application.Contracts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using AbpLoanDemo.Identity.EntityFrameworkCore;
-using AbpLoanDemo.Identity.Localization;
-using AbpLoanDemo.Identity.MultiTenancy;
-using AbpLoanDemo.Identity.Web.Menus;
 using Microsoft.OpenApi.Models;
+using System;
+using System.IO;
 using Volo.Abp;
 using Volo.Abp.Account.Web;
 using Volo.Abp.AspNetCore.Authentication.JwtBearer;
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.AspNetCore.Mvc.Localization;
-using Volo.Abp.AspNetCore.Mvc.UI;
-using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap;
-using Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared;
 using Volo.Abp.AspNetCore.Serilog;
 using Volo.Abp.Autofac;
 using Volo.Abp.AutoMapper;
-using Volo.Abp.FeatureManagement;
 using Volo.Abp.Identity.Web;
 using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
-using Volo.Abp.PermissionManagement.Web;
 using Volo.Abp.Swashbuckle;
 using Volo.Abp.TenantManagement.Web;
-using Volo.Abp.UI.Navigation.Urls;
-using Volo.Abp.UI;
 using Volo.Abp.UI.Navigation;
+using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.VirtualFileSystem;
 
 namespace AbpLoanDemo.Identity.Web
@@ -48,7 +44,9 @@ namespace AbpLoanDemo.Identity.Web
         typeof(AbpAspNetCoreAuthenticationJwtBearerModule),
         typeof(AbpTenantManagementWebModule),
         typeof(AbpAspNetCoreSerilogModule),
-        typeof(AbpSwashbuckleModule)
+        typeof(AbpSwashbuckleModule),
+        typeof(AppCustomerApplicationContractModule),
+        typeof(AppLoanApplicationContractModule)
         )]
     public class IdentityWebModule : AbpModule
     {

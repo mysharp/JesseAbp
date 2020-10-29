@@ -1,10 +1,14 @@
-﻿using AbpLoanDemo.Customer.Application;
+﻿using System;
+using AbpLoanDemo.Customer.Application;
 using AbpLoanDemo.Customer.Application.DomainEventHandlers;
 using AbpLoanDemo.Customer.EntityFrameworkCore;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System.Text;
 using Volo.Abp;
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.Autofac;
@@ -27,6 +31,18 @@ namespace AbpLoanDemo.Customer.HttpApi
 
             context.Services.AddMediatR(typeof(CustomerLinkmanAddedDomainEventHandler));
 
+            var configuration = context.Services.GetConfiguration();
+
+            context.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddIdentityServerAuthentication(options =>
+                {
+                    options.Authority = configuration["AuthServer:Authority"];
+                    options.ApiName = configuration["AuthServer:ApiName"];
+                    options.ApiSecret = configuration["AuthServer:ClientSecret"];
+
+                    options.RequireHttpsMetadata = false;
+                });
+
             ConfigureSwaggerServices(context.Services);
         }
 
@@ -35,7 +51,12 @@ namespace AbpLoanDemo.Customer.HttpApi
             var app = context.GetApplicationBuilder();
             var env = context.GetEnvironment();
 
+            app.UseAuthentication();
+
             app.UseRouting();
+
+            app.UseAuthorization();
+
             app.UseConfiguredEndpoints();
 
             app.UseSwagger();

@@ -118,7 +118,7 @@ namespace AbpLoanDemo.Identity.IdentityServer
                 await CreateClientAsync(
                     name: webClientId,
                     scopes: commonScopes,
-                    grantTypes: new[] {"hybrid"},
+                    grantTypes: new[] { GrantType.Hybrid, GrantType.ResourceOwnerPassword },
                     secret: (configurationSection["Identity_Web:ClientSecret"] ?? "1q2w3e*").Sha256(),
                     redirectUri: $"{webClientRootUrl}signin-oidc",
                     postLogoutRedirectUri: $"{webClientRootUrl}signout-callback-oidc",
@@ -135,7 +135,7 @@ namespace AbpLoanDemo.Identity.IdentityServer
                 await CreateClientAsync(
                     name: consoleAndAngularClientId,
                     scopes: commonScopes,
-                    grantTypes: new[] {"password", "client_credentials", "authorization_code"},
+                    grantTypes: new[] { GrantType.ResourceOwnerPassword, GrantType.ClientCredentials, GrantType.AuthorizationCode },
                     secret: (configurationSection["Identity_App:ClientSecret"] ?? "1q2w3e*").Sha256(),
                     requireClientSecret: false,
                     redirectUri: webClientRootUrl,
@@ -152,7 +152,7 @@ namespace AbpLoanDemo.Identity.IdentityServer
                 await CreateClientAsync(
                     name: customerApiId,
                     scopes: commonScopes,
-                    grantTypes: new[] { "hybrid" },
+                    grantTypes: new[] { GrantType.Hybrid, GrantType.ResourceOwnerPassword },
                     secret: (configurationSection["Customer_Api:ClientSecret"] ?? "1q2w3e*").Sha256(),
                     redirectUri: $"{webClientRootUrl}signin-oidc",
                     postLogoutRedirectUri: $"{webClientRootUrl}signout-callback-oidc",
@@ -160,7 +160,7 @@ namespace AbpLoanDemo.Identity.IdentityServer
                 );
             }
 
-            //Customer Api
+            //Loan Api
             var loanApiId = configurationSection["Loan_Api:ClientId"];
             if (!loanApiId.IsNullOrWhiteSpace())
             {
@@ -169,7 +169,7 @@ namespace AbpLoanDemo.Identity.IdentityServer
                 await CreateClientAsync(
                     name: loanApiId,
                     scopes: commonScopes,
-                    grantTypes: new[] { "hybrid" },
+                    grantTypes: new[] { GrantType.Hybrid, GrantType.ResourceOwnerPassword },
                     secret: (configurationSection["Loan_Api:ClientSecret"] ?? "1q2w3e*").Sha256(),
                     redirectUri: $"{webClientRootUrl}signin-oidc",
                     postLogoutRedirectUri: $"{webClientRootUrl}signout-callback-oidc",
