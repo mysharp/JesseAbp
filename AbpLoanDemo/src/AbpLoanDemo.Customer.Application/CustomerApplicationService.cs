@@ -33,7 +33,8 @@ namespace AbpLoanDemo.Customer.Application
         /// <returns></returns>
         public async Task<CustomerDto> GetAsync(Guid id)
         {
-            //var user = _accessor.Principal;
+            var user = _accessor.Principal;
+            var currentUser = CurrentUser;
             var customer = await _customerRepository.GetAsync(p => p.Id == id);
 
             return ObjectMapper.Map<Domain.Entities.Customer, CustomerDto>(customer);

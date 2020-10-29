@@ -73,6 +73,7 @@ namespace AbpLoanDemo.Customer.HttpApi
             app.UseAuthentication();
 
             app.UseJwtTokenMiddleware();
+            app.UseAbpClaimsMap();
 
             app.UseRouting();
 
