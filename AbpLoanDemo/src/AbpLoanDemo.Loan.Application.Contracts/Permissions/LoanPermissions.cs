@@ -2,7 +2,7 @@
 {
     public class LoanPermissions
     {
-        public const string GroupName = "Loan";
+        public const string GroupName = "LoanStore";
 
         public static class LoanRequest
         {

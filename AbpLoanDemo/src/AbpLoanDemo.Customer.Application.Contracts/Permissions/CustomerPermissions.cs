@@ -2,7 +2,7 @@
 {
     public class CustomerPermissions
     {
-        public const string GroupName = "Customer";
+        public const string GroupName = "CustomerStore";
 
         public static class Customer
         {

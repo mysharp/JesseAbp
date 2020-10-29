@@ -8,13 +8,13 @@ namespace AbpLoanDemo.Customer.Application.Contracts.Permissions
     {
         public override void Define(IPermissionDefinitionContext context)
         {
-            var customerGroup = context.AddGroup(CustomerPermissions.GroupName, L("Customer:Customer"), MultiTenancySides.Both);
+            var customerGroup = context.AddGroup(CustomerPermissions.GroupName, L("Permission:CustomerStore"), MultiTenancySides.Both);
 
             var customerPermissions =
-                customerGroup.AddPermission(CustomerPermissions.Customer.Default, L("Customer:Customer"), MultiTenancySides.Both);
+                customerGroup.AddPermission(CustomerPermissions.Customer.Default, L("Permission:CustomerStore_Customer"), MultiTenancySides.Both);
 
-            customerPermissions.AddChild(CustomerPermissions.Customer.Create, L("Customer:Customer:Create"));
-            customerPermissions.AddChild(CustomerPermissions.Customer.AddLinkman, L("Customer:Customer:AddLinkman"));
+            customerPermissions.AddChild(CustomerPermissions.Customer.Create, L("Permission:CustomerStore_Customer_Create"));
+            customerPermissions.AddChild(CustomerPermissions.Customer.AddLinkman, L("Permission:CustomerStore_Customer_AddLinkman"));
         }
 
         private LocalizableString L(string name)

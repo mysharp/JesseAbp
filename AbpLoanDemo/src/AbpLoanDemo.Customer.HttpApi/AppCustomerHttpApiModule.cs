@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
+using AbpLoanDemo.Customer.Application.Contracts.Permissions;
 using Volo.Abp;
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.Autofac;
@@ -39,6 +40,9 @@ namespace AbpLoanDemo.Customer.HttpApi
                     options.Authority = configuration["AuthServer:Authority"];
                     options.ApiName = configuration["AuthServer:ApiName"];
                     options.ApiSecret = configuration["AuthServer:ClientSecret"];
+
+                    options.SaveToken = true;
+                    options.JwtValidationClockSkew = TimeSpan.FromMinutes(30);
 
                     options.RequireHttpsMetadata = false;
                 });
