@@ -176,6 +176,23 @@ namespace AbpLoanDemo.Identity.IdentityServer
                     frontChannelLogoutUri: $"{webClientRootUrl}Account/FrontChannelLogout"
                 );
             }
+
+            //Monolith Api
+            var monolithApiId = configurationSection["Monolith_Api:ClientId"];
+            if (!loanApiId.IsNullOrWhiteSpace())
+            {
+                var webClientRootUrl = configurationSection["Monolith_Api:RootUrl"].EnsureEndsWith('/');
+
+                await CreateClientAsync(
+                    name: monolithApiId,
+                    scopes: commonScopes,
+                    grantTypes: new[] { GrantType.Hybrid, GrantType.ResourceOwnerPassword },
+                    secret: (configurationSection["Monolith_Api:ClientSecret"] ?? "1q2w3e*").Sha256(),
+                    redirectUri: $"{webClientRootUrl}signin-oidc",
+                    postLogoutRedirectUri: $"{webClientRootUrl}signout-callback-oidc",
+                    frontChannelLogoutUri: $"{webClientRootUrl}Account/FrontChannelLogout"
+                );
+            }
         }
 
         private async Task<Client> CreateClientAsync(

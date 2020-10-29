@@ -59,6 +59,8 @@ namespace AbpLoanDemo.Loan.HttpApi
 
             app.UseConfiguredEndpoints();
 
+            app.UseUnitOfWork();
+
             app.UseSwagger();
             app.UseSwaggerUI(options => { options.SwaggerEndpoint("/swagger/v1/swagger.json", "Loan API"); });
         }

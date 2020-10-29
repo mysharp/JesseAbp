@@ -20,7 +20,7 @@ namespace AbpLoanDemo.Loan.Domain.Entities
             AddDomainEvent(new LoanRequestAddedDomainEvent(this));
         }
 
-        public Applier Applier { get; }
+        public Applier Applier { get; private set; }
 
         public IReadOnlyCollection<Applier> Partners => _partners;
 

@@ -50,6 +50,8 @@ namespace AbpLoanDemo.Customer.HttpApi
 
             app.UseConfiguredEndpoints();
 
+            app.UseUnitOfWork();
+
             app.UseSwagger();
             app.UseSwaggerUI(options => { options.SwaggerEndpoint("/swagger/v1/swagger.json", "Customer API"); });
         }

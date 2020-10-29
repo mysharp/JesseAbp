@@ -15,9 +15,9 @@ namespace AbpLoanDemo.Customer.Domain.Entities
             Phone = phone;
         }
 
-        public string Name { get; }
+        public string Name { get; private set; }
 
-        public string Phone { get; }
+        public string Phone { get; private set; }
 
         public string Address { get; private set; }
 

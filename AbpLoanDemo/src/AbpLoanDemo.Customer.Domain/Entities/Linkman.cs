@@ -5,10 +5,17 @@ namespace AbpLoanDemo.Customer.Domain.Entities
 {
     public class Linkman : Entity<Guid>
     {
-        public string Name { get; set; }
+        private Linkman(string name, string phone, string idNo)
+        {
+            Name = name;
+            Phone = phone;
+            IdNo = idNo;
+        }
 
-        public string Phone { get; set; }
+        public string Name { get; private set; }
 
-        public string IdNo { get; set; }
+        public string Phone { get; private set; }
+
+        public string IdNo { get; private set; }
     }
 }

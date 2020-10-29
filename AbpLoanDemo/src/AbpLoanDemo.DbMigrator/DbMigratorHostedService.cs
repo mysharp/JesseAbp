@@ -1,6 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using AbpLoanDemo.Customer.Domain.Data;
+using AbpLoanDemo.Identity.Data;
 using AbpLoanDemo.Loan.Domain.Data;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -11,6 +12,13 @@ namespace AbpLoanDemo.DbMigrator
 {
     public class DbMigratorHostedService : IHostedService
     {
+        private readonly IHostApplicationLifetime _hostApplicationLifetime;
+
+        public DbMigratorHostedService(IHostApplicationLifetime hostApplicationLifetime)
+        {
+            _hostApplicationLifetime = hostApplicationLifetime;
+        }
+
         public async Task StartAsync(CancellationToken cancellationToken)
         {
             using var application = AbpApplicationFactory.Create<AppDbMigratorModule>(options =>
@@ -20,6 +28,11 @@ namespace AbpLoanDemo.DbMigrator
             });
 
             application.Initialize();
+
+            await application
+                .ServiceProvider
+                .GetRequiredService<IdentityDbMigrationService>()
+                .MigrateAsync();
 
             await application
                 .ServiceProvider
@@ -33,6 +46,8 @@ namespace AbpLoanDemo.DbMigrator
                 .MigrateAsync();
 
             application.Shutdown();
+
+            _hostApplicationLifetime.StopApplication();
         }
 
         public Task StopAsync(CancellationToken cancellationToken)
