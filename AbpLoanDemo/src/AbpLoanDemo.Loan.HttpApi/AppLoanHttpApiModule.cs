@@ -37,33 +37,8 @@ namespace AbpLoanDemo.Loan.HttpApi
             });
 
             context.Services.AddMediatR(typeof(LoanRequestAddedDomainEventHandler));
-
-
-            var configuration = context.Services.GetConfiguration();
-
-            context.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddIdentityServerAuthentication(options =>
-                {
-                    options.Authority = configuration["AuthServer:Authority"];
-                    options.ApiName = configuration["AuthServer:ApiName"];
-                    options.ApiSecret = configuration["AuthServer:ClientSecret"];
-
-                    options.SaveToken = true;
-                    options.JwtValidationClockSkew = TimeSpan.FromMinutes(30);
-
-                    options.RequireHttpsMetadata = false;
-
-                    //options.JwtBearerEvents.OnMessageReceived = c =>
-                    //{
-                    //    Console.WriteLine("Token:" + c.Token);
-                    //    return Task.CompletedTask;
-                    //};
-                    //options.JwtBearerEvents.OnTokenValidated = c =>
-                    //{
-                    //    Console.WriteLine("Principal:" + c.Principal.Identity.Name);
-                    //    return Task.CompletedTask;
-                    //};
-                });
+            
+            ConfigureAuthentication(context.Services);
 
             ConfigureSwaggerServices(context.Services);
         }
@@ -86,6 +61,35 @@ namespace AbpLoanDemo.Loan.HttpApi
 
             app.UseSwagger();
             app.UseSwaggerUI(options => { options.SwaggerEndpoint("/swagger/v1/swagger.json", "Loan API"); });
+        }
+
+        private void ConfigureAuthentication(IServiceCollection services)
+        {
+            var configuration = services.GetConfiguration();
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddIdentityServerAuthentication(options =>
+                {
+                    options.Authority = configuration["AuthServer:Authority"];
+                    options.ApiName = configuration["AuthServer:ApiName"];
+                    options.ApiSecret = configuration["AuthServer:ClientSecret"];
+
+                    options.SaveToken = true;
+                    options.JwtValidationClockSkew = TimeSpan.FromMinutes(30);
+
+                    options.RequireHttpsMetadata = false;
+
+                    //options.JwtBearerEvents.OnMessageReceived = c =>
+                    //{
+                    //    Console.WriteLine("Token:" + c.Token);
+                    //    return Task.CompletedTask;
+                    //};
+                    //options.JwtBearerEvents.OnTokenValidated = c =>
+                    //{
+                    //    Console.WriteLine("Principal:" + c.Principal.Identity.Name);
+                    //    return Task.CompletedTask;
+                    //};
+                });
         }
 
         private void ConfigureSwaggerServices(IServiceCollection service)
