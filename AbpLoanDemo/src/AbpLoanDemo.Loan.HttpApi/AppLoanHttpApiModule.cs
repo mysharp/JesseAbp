@@ -1,5 +1,4 @@
-﻿using System;
-using AbpLoanDemo.Customer.Application.Contracts;
+﻿using AbpLoanDemo.Customer.Application.Contracts;
 using AbpLoanDemo.Loan.Application;
 using AbpLoanDemo.Loan.Application.DomainEventHandlers;
 using AbpLoanDemo.Loan.EntityFrameworkCore;
@@ -8,6 +7,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
+using System;
 using Volo.Abp;
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.Autofac;
