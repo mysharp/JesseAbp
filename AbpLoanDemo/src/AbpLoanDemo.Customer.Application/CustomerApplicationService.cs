@@ -8,7 +8,9 @@ using AbpLoanDemo.Customer.Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Domain.Repositories;
+using Volo.Abp.Security.Claims;
 using Volo.Abp.Uow;
+using Volo.Abp.Users;
 
 namespace AbpLoanDemo.Customer.Application
 {
@@ -16,10 +18,12 @@ namespace AbpLoanDemo.Customer.Application
     public class CustomerApplicationService : ApplicationService, ICustomerApplicationService
     {
         private readonly IRepository<Domain.Entities.Customer> _customerRepository;
+        private readonly ICurrentPrincipalAccessor _accessor;
 
-        public CustomerApplicationService(IRepository<Domain.Entities.Customer> customerRepository)
+        public CustomerApplicationService(IRepository<Domain.Entities.Customer> customerRepository, ICurrentPrincipalAccessor accessor)
         {
             _customerRepository = customerRepository;
+            _accessor = accessor;
         }
 
         /// <summary>
@@ -29,6 +33,7 @@ namespace AbpLoanDemo.Customer.Application
         /// <returns></returns>
         public async Task<CustomerDto> GetAsync(Guid id)
         {
+            //var user = _accessor.Principal;
             var customer = await _customerRepository.GetAsync(p => p.Id == id);
 
             return ObjectMapper.Map<Domain.Entities.Customer, CustomerDto>(customer);

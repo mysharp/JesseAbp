@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Principal;
 using AbpLoanDemo.Customer.Application;
 using AbpLoanDemo.Customer.Application.DomainEventHandlers;
 using AbpLoanDemo.Customer.EntityFrameworkCore;
@@ -9,7 +10,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
+using System.Threading.Tasks;
 using AbpLoanDemo.Customer.Application.Contracts.Permissions;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Http;
 using Volo.Abp;
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.Autofac;
@@ -45,6 +49,17 @@ namespace AbpLoanDemo.Customer.HttpApi
                     options.JwtValidationClockSkew = TimeSpan.FromMinutes(30);
 
                     options.RequireHttpsMetadata = false;
+
+                    //options.JwtBearerEvents.OnMessageReceived = c =>
+                    //{
+                    //    Console.WriteLine("Token:" + c.Token);
+                    //    return Task.CompletedTask;
+                    //};
+                    //options.JwtBearerEvents.OnTokenValidated = c =>
+                    //{
+                    //    Console.WriteLine("Principal:" + c.Principal.Identity.Name);
+                    //    return Task.CompletedTask;
+                    //};
                 });
 
             ConfigureSwaggerServices(context.Services);
@@ -56,6 +71,8 @@ namespace AbpLoanDemo.Customer.HttpApi
             var env = context.GetEnvironment();
 
             app.UseAuthentication();
+
+            app.UseJwtTokenMiddleware();
 
             app.UseRouting();
 
