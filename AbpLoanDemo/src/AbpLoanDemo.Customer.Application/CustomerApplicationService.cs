@@ -66,6 +66,7 @@ namespace AbpLoanDemo.Customer.Application
             return ObjectMapper.Map<Domain.Entities.Customer, CustomerDto>(result);
         }
 
+        [Authorize(CustomerPermissions.Customer.AddLinkman)]
         public virtual async Task<CustomerDto> AddLinkmanAsync(Guid id, CustomerAddLinkmanDto linkman)
         {
             var customer = await _customerRepository.GetAsync(c => c.Id == id);

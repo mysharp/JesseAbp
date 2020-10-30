@@ -14,7 +14,7 @@ using Volo.Abp.Uow;
 
 namespace AbpLoanDemo.Loan.Application
 {
-    [Authorize]
+    [Authorize(LoanPermissions.LoanRequest.Default)]
     public class LoanRequestApplicationService : ApplicationService, ILoanRequestApplicationService
     {
         private readonly IRepository<LoanRequest> _loanRequestRepository;
@@ -44,6 +44,7 @@ namespace AbpLoanDemo.Loan.Application
             return ObjectMapper.Map<List<LoanRequest>, List<LoanRequestDto>>(loanRequests);
         }
 
+        [Authorize(LoanPermissions.LoanRequest.Create)]
         public virtual async Task<LoanRequestDto> CreateAsync(LoanRequestCreateDto dto)
         {
             var customer = await CustomerApplicationService.GetAsync(dto.CustomerId);
@@ -61,6 +62,7 @@ namespace AbpLoanDemo.Loan.Application
             return ObjectMapper.Map<LoanRequest, LoanRequestDto>(entity);
         }
 
+        [Authorize(LoanPermissions.LoanRequest.AddPartner)]
         public virtual async Task<LoanRequestDto> AddPartner(Guid id, LoanRequestAddPartnerDto dto)
         {
             var customer = await CustomerApplicationService.GetAsync(dto.PartnerId);
@@ -78,6 +80,7 @@ namespace AbpLoanDemo.Loan.Application
             return ObjectMapper.Map<LoanRequest, LoanRequestDto>(loanRequest);
         }
 
+        [Authorize(LoanPermissions.LoanRequest.UpdateScore)]
         public virtual async Task<LoanRequestDto> UpdateScoreAsync(Guid id, LoanRequestSetScoreDto dto)
         {
             var loanRequest = await _loanRequestRepository.GetAsync(p => p.Id == id);
@@ -90,6 +93,7 @@ namespace AbpLoanDemo.Loan.Application
             return ObjectMapper.Map<LoanRequest, LoanRequestDto>(loanRequest);
         }
 
+        [Authorize(LoanPermissions.LoanRequest.UpdateGuarantee)]
         public virtual async Task<LoanRequestDto> UpdateGuaranteeAsync(Guid id, LoanRequestSetGuaranteeDto dto)
         {
             var guaranteeEntity = ObjectMapper.Map<LoanRequestSetGuaranteeDto, Guarantee>(dto);
@@ -104,6 +108,7 @@ namespace AbpLoanDemo.Loan.Application
             return ObjectMapper.Map<LoanRequest, LoanRequestDto>(loanRequest);
         }
 
+        [Authorize(LoanPermissions.LoanRequest.UpdateAmount)]
         public virtual async Task<LoanRequestDto> UpdateAmountAsync(Guid id, LoanRequestSetAmountDto dto)
         {
             var loanRequest = await _loanRequestRepository.GetAsync(p => p.Id == id);
