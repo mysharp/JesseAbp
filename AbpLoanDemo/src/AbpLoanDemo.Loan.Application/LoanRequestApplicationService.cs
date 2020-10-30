@@ -30,21 +30,21 @@ namespace AbpLoanDemo.Loan.Application
 
         protected ICustomerApplicationService CustomerApplicationService { get; set; }
 
-        public async Task<LoanRequestDto> GetAsync(Guid id)
+        public virtual async Task<LoanRequestDto> GetAsync(Guid id)
         {
             var loanRequest = await _loanRequestRepository.GetAsync(p => p.Id == id);
 
             return ObjectMapper.Map<LoanRequest, LoanRequestDto>(loanRequest);
         }
 
-        public async Task<List<LoanRequestDto>> GetListAsync()
+        public virtual async Task<List<LoanRequestDto>> GetListAsync()
         {
             var loanRequests = await _loanRequestRepository.GetListAsync(true);
 
             return ObjectMapper.Map<List<LoanRequest>, List<LoanRequestDto>>(loanRequests);
         }
 
-        public async Task<LoanRequestDto> CreateAsync(LoanRequestCreateDto dto)
+        public virtual async Task<LoanRequestDto> CreateAsync(LoanRequestCreateDto dto)
         {
             var customer = await CustomerApplicationService.GetAsync(dto.CustomerId);
             if (customer == null)
@@ -61,7 +61,7 @@ namespace AbpLoanDemo.Loan.Application
             return ObjectMapper.Map<LoanRequest, LoanRequestDto>(entity);
         }
 
-        public async Task<LoanRequestDto> AddPartner(Guid id, LoanRequestAddPartnerDto dto)
+        public virtual async Task<LoanRequestDto> AddPartner(Guid id, LoanRequestAddPartnerDto dto)
         {
             var customer = await CustomerApplicationService.GetAsync(dto.PartnerId);
             if (customer == null)
@@ -78,7 +78,7 @@ namespace AbpLoanDemo.Loan.Application
             return ObjectMapper.Map<LoanRequest, LoanRequestDto>(loanRequest);
         }
 
-        public async Task<LoanRequestDto> UpdateScoreAsync(Guid id, LoanRequestSetScoreDto dto)
+        public virtual async Task<LoanRequestDto> UpdateScoreAsync(Guid id, LoanRequestSetScoreDto dto)
         {
             var loanRequest = await _loanRequestRepository.GetAsync(p => p.Id == id);
             loanRequest.SetScore(dto.Score);
@@ -90,7 +90,7 @@ namespace AbpLoanDemo.Loan.Application
             return ObjectMapper.Map<LoanRequest, LoanRequestDto>(loanRequest);
         }
 
-        public async Task<LoanRequestDto> UpdateGuaranteeAsync(Guid id, LoanRequestSetGuaranteeDto dto)
+        public virtual async Task<LoanRequestDto> UpdateGuaranteeAsync(Guid id, LoanRequestSetGuaranteeDto dto)
         {
             var guaranteeEntity = ObjectMapper.Map<LoanRequestSetGuaranteeDto, Guarantee>(dto);
 
@@ -104,7 +104,7 @@ namespace AbpLoanDemo.Loan.Application
             return ObjectMapper.Map<LoanRequest, LoanRequestDto>(loanRequest);
         }
 
-        public async Task<LoanRequestDto> UpdateAmountAsync(Guid id, LoanRequestSetAmountDto dto)
+        public virtual async Task<LoanRequestDto> UpdateAmountAsync(Guid id, LoanRequestSetAmountDto dto)
         {
             var loanRequest = await _loanRequestRepository.GetAsync(p => p.Id == id);
             loanRequest.SetAmount(dto.Amount);

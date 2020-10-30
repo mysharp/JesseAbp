@@ -35,7 +35,7 @@ namespace AbpLoanDemo.HttpApi
 
             context.Services.AddMediatR(typeof(CustomerChangedDomainEventHandler),
                 typeof(LoanRequestAddedDomainEventHandler));
-
+            
             ConfigureAuthentication(context.Services);
 
             ConfigureSwaggerServices(context.Services);
