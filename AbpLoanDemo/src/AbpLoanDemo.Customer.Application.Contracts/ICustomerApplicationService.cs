@@ -12,7 +12,9 @@ namespace AbpLoanDemo.Customer.Application.Contracts
 
         Task<List<CustomerDto>> GetListAsync();
 
-        Task<CustomerDto> CreateAsync(CustomerCreateDto customer);
+        Task<CustomerDto> CreateAsync(CustomerEditDto customer);
+
+        Task<CustomerDto> UpdateAsync(Guid id, CustomerEditDto customer);
 
         Task<CustomerDto> AddLinkmanAsync(Guid id, CustomerAddLinkmanDto linkman);
     }

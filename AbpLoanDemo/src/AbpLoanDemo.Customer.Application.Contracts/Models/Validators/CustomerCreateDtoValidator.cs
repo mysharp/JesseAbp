@@ -3,7 +3,7 @@ using FluentValidation;
 
 namespace AbpLoanDemo.Customer.Application.Contracts.Models.Validators
 {
-    public class CustomerCreateDtoValidator : AbstractValidator<CustomerCreateDto>
+    public class CustomerCreateDtoValidator : AbstractValidator<CustomerEditDto>
     {
         public CustomerCreateDtoValidator()
         {

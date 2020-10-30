@@ -2,12 +2,15 @@
 using AbpLoanDemo.Loan.Application;
 using AbpLoanDemo.Loan.Application.DomainEventHandlers;
 using AbpLoanDemo.Loan.EntityFrameworkCore;
+using EasyAbp.Abp.EventBus.Cap;
+using EasyAbp.Abp.EventBus.CAP.SqlServer;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using System;
+using Microsoft.Extensions.Configuration;
 using Volo.Abp;
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.Autofac;
@@ -19,6 +22,7 @@ namespace AbpLoanDemo.Loan.HttpApi
 {
     [DependsOn(typeof(AbpAspNetCoreMvcModule), typeof(AbpAutofacModule),
         typeof(AbpPermissionManagementEntityFrameworkCoreModule))]
+    [DependsOn(typeof(AbpEventBusCapModule),typeof(AbpEventBusCapSqlServerModule))]
     [DependsOn(typeof(AbpHttpClientModule))] //引入此Module，不然HttpClientProxy报错
     [DependsOn(typeof(AppLoanApplicationModule))]
     [DependsOn(typeof(AppCustomerApplicationContractModule))]
@@ -38,8 +42,12 @@ namespace AbpLoanDemo.Loan.HttpApi
             });
 
             context.Services.AddMediatR(typeof(LoanRequestAddedDomainEventHandler));
+
+            var configuration = context.Services.GetConfiguration();
+
+            ConfigureCapEventBus(context, configuration);
             
-            ConfigureAuthentication(context.Services);
+            ConfigureAuthentication(context.Services,configuration);
 
             ConfigureSwaggerServices(context.Services);
         }
@@ -66,10 +74,39 @@ namespace AbpLoanDemo.Loan.HttpApi
             app.UseSwaggerUI(options => { options.SwaggerEndpoint("/swagger/v1/swagger.json", "Loan API"); });
         }
 
-        private void ConfigureAuthentication(IServiceCollection services)
+        private void ConfigureCapEventBus(ServiceConfigurationContext context, IConfiguration configuration)
         {
-            var configuration = services.GetConfiguration();
+            context.AddCapEventBus(capOptions =>
+            {
+                capOptions.DefaultGroup = "AbpLoan";
+                capOptions.FailedThresholdCallback = (failed) =>
+                {
+                    switch (failed.MessageType)
+                    {
+                        case DotNetCore.CAP.Messages.MessageType.Publish:
+                            System.Diagnostics.Debug.WriteLine(failed.Message);
+                            break;
+                        case DotNetCore.CAP.Messages.MessageType.Subscribe:
+                            System.Diagnostics.Debug.WriteLine(failed.Message);
+                            break;
+                        default:
+                            break;
+                    }
+                };
+                capOptions.UseEntityFramework<LoanDbContext>();
+                capOptions.UseRabbitMQ(x =>
+                {
+                    x.HostName = configuration["CAP:RabbitMQ:Host"];
+                    x.UserName = configuration["CAP:RabbitMQ:User"];
+                    x.Password = configuration["CAP:RabbitMQ:Password"];
+                    x.VirtualHost = configuration["CAP:RabbitMQ:VirtualHost"];
+                });
+                capOptions.UseDashboard();
+            });
+        }
 
+        private void ConfigureAuthentication(IServiceCollection services, IConfiguration configuration)
+        {
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddIdentityServerAuthentication(options =>
                 {

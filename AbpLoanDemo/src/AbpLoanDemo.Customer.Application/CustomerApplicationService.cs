@@ -55,15 +55,24 @@ namespace AbpLoanDemo.Customer.Application
         /// </remarks>
         /// <returns></returns>
         [Authorize(CustomerPermissions.Customer.Create)]
-        public virtual async Task<CustomerDto> CreateAsync(CustomerCreateDto customer)
+        public virtual async Task<CustomerDto> CreateAsync(CustomerEditDto customer)
         {
-            var entity = ObjectMapper.Map<CustomerCreateDto, Domain.Entities.Customer>(customer);
+            var entity = ObjectMapper.Map<CustomerEditDto, Domain.Entities.Customer>(customer);
 
             using var uow = UnitOfWorkManager.Begin(new AbpUnitOfWorkOptions());
             var result = await _customerRepository.InsertAsync(entity);
-            await uow.SaveChangesAsync();
 
             return ObjectMapper.Map<Domain.Entities.Customer, CustomerDto>(result);
+        }
+
+        public virtual async Task<CustomerDto> UpdateAsync(Guid id, CustomerEditDto customer)
+        {
+            var entity = await _customerRepository.GetAsync(c => c.Id == id);
+            entity.Update( customer.Name, customer.Address, customer.IdNo);
+
+            var updateCustomerResult = await _customerRepository.UpdateAsync(entity, false);
+
+            return ObjectMapper.Map<Domain.Entities.Customer, CustomerDto>(updateCustomerResult);
         }
 
         [Authorize(CustomerPermissions.Customer.AddLinkman)]
@@ -75,7 +84,6 @@ namespace AbpLoanDemo.Customer.Application
             customer.AddLinkman(linkmanEntity);
 
             var updateCustomerResult = await _customerRepository.UpdateAsync(customer, false);
-            await CurrentUnitOfWork.SaveChangesAsync();
 
             return ObjectMapper.Map<Domain.Entities.Customer, CustomerDto>(updateCustomerResult);
         }

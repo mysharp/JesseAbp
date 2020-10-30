@@ -25,15 +25,10 @@ namespace AbpLoanDemo.Customer.Domain.Entities
 
         public IReadOnlyCollection<Linkman> Linkman => _linkman;
 
-        public void SetAddress(string address)
+        public void Update(string name, string address, string idNo)
         {
+            Name = name;
             Address = address;
-
-            AddDomainEvent(new CustomerChangedDomainEvent(this));
-        }
-
-        public void SetIdNo(string idNo)
-        {
             IdNo = idNo;
 
             AddDomainEvent(new CustomerChangedDomainEvent(this));

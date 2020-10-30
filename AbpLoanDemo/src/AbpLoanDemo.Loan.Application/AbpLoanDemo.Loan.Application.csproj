@@ -16,8 +16,4 @@
     <ProjectReference Include="..\AbpLoanDemo.Loan.Domain\AbpLoanDemo.Loan.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="IntegrationEvents\" />
-  </ItemGroup>
-
 </Project>

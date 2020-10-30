@@ -1,6 +1,6 @@
 ﻿namespace AbpLoanDemo.Customer.Application.Contracts.Models.Dtos
 {
-    public class CustomerCreateDto
+    public class CustomerEditDto
     {
         public string Name { get; set; }
 
