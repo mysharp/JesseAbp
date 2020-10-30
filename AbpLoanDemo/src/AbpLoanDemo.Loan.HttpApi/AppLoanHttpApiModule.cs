@@ -13,11 +13,12 @@ using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.Autofac;
 using Volo.Abp.Http.Client;
 using Volo.Abp.Modularity;
+using Volo.Abp.PermissionManagement.EntityFrameworkCore;
 
 namespace AbpLoanDemo.Loan.HttpApi
 {
-    [DependsOn(typeof(AbpAspNetCoreMvcModule))]
-    [DependsOn(typeof(AbpAutofacModule))]
+    [DependsOn(typeof(AbpAspNetCoreMvcModule), typeof(AbpAutofacModule),
+        typeof(AbpPermissionManagementEntityFrameworkCoreModule))]
     [DependsOn(typeof(AbpHttpClientModule))] //引入此Module，不然HttpClientProxy报错
     [DependsOn(typeof(AppLoanApplicationModule))]
     [DependsOn(typeof(AppCustomerApplicationContractModule))]

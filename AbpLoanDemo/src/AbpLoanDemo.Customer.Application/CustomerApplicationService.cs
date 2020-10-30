@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using AbpLoanDemo.Customer.Application.Contracts.Permissions;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Domain.Repositories;
 using Volo.Abp.Security.Claims;
@@ -12,7 +13,7 @@ using Volo.Abp.Uow;
 
 namespace AbpLoanDemo.Customer.Application
 {
-    [Authorize]
+    [Authorize(CustomerPermissions.Customer.Default)]
     public class CustomerApplicationService : ApplicationService, ICustomerApplicationService
     {
         private readonly IRepository<Domain.Entities.Customer> _customerRepository;
@@ -53,6 +54,7 @@ namespace AbpLoanDemo.Customer.Application
         ///     为了使使用动态代理/拦截系统来执行验证,方法必须是 virtual 的
         /// </remarks>
         /// <returns></returns>
+        [Authorize(CustomerPermissions.Customer.Create)]
         public virtual async Task<CustomerDto> CreateAsync(CustomerCreateDto customer)
         {
             var entity = ObjectMapper.Map<CustomerCreateDto, Domain.Entities.Customer>(customer);

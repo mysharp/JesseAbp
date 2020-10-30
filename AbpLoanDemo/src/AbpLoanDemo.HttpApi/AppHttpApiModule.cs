@@ -14,11 +14,12 @@ using Volo.Abp;
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.Autofac;
 using Volo.Abp.Modularity;
+using Volo.Abp.PermissionManagement.EntityFrameworkCore;
 
 namespace AbpLoanDemo.HttpApi
 {
-    [DependsOn(typeof(AbpAspNetCoreMvcModule))]
-    [DependsOn(typeof(AbpAutofacModule))]
+    [DependsOn(typeof(AbpAspNetCoreMvcModule),typeof(AbpAutofacModule),
+        typeof(AbpPermissionManagementEntityFrameworkCoreModule))]
     [DependsOn(typeof(AppLoanApplicationModule))]
     [DependsOn(typeof(AppCustomerApplicationModule))]
     [DependsOn(typeof(AppLoanEntityFrameworkCoreModule))]
