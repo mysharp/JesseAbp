@@ -142,57 +142,6 @@ namespace AbpLoanDemo.Identity.IdentityServer
                     postLogoutRedirectUri: webClientRootUrl
                 );
             }
-
-            //Customer Api
-            var customerApiId = configurationSection["Customer_Api:ClientId"];
-            if (!customerApiId.IsNullOrWhiteSpace())
-            {
-                var webClientRootUrl = configurationSection["Customer_Api:RootUrl"].EnsureEndsWith('/');
-                
-                await CreateClientAsync(
-                    name: customerApiId,
-                    scopes: commonScopes,
-                    grantTypes: new[] { GrantType.Hybrid, GrantType.ResourceOwnerPassword },
-                    secret: (configurationSection["Customer_Api:ClientSecret"] ?? "1q2w3e*").Sha256(),
-                    redirectUri: $"{webClientRootUrl}signin-oidc",
-                    postLogoutRedirectUri: $"{webClientRootUrl}signout-callback-oidc",
-                    frontChannelLogoutUri: $"{webClientRootUrl}Account/FrontChannelLogout"
-                );
-            }
-
-            //Loan Api
-            var loanApiId = configurationSection["Loan_Api:ClientId"];
-            if (!loanApiId.IsNullOrWhiteSpace())
-            {
-                var webClientRootUrl = configurationSection["Loan_Api:RootUrl"].EnsureEndsWith('/');
-                
-                await CreateClientAsync(
-                    name: loanApiId,
-                    scopes: commonScopes,
-                    grantTypes: new[] { GrantType.Hybrid, GrantType.ResourceOwnerPassword },
-                    secret: (configurationSection["Loan_Api:ClientSecret"] ?? "1q2w3e*").Sha256(),
-                    redirectUri: $"{webClientRootUrl}signin-oidc",
-                    postLogoutRedirectUri: $"{webClientRootUrl}signout-callback-oidc",
-                    frontChannelLogoutUri: $"{webClientRootUrl}Account/FrontChannelLogout"
-                );
-            }
-
-            //Monolith Api
-            var monolithApiId = configurationSection["Monolith_Api:ClientId"];
-            if (!loanApiId.IsNullOrWhiteSpace())
-            {
-                var webClientRootUrl = configurationSection["Monolith_Api:RootUrl"].EnsureEndsWith('/');
-
-                await CreateClientAsync(
-                    name: monolithApiId,
-                    scopes: commonScopes,
-                    grantTypes: new[] { GrantType.Hybrid, GrantType.ResourceOwnerPassword },
-                    secret: (configurationSection["Monolith_Api:ClientSecret"] ?? "1q2w3e*").Sha256(),
-                    redirectUri: $"{webClientRootUrl}signin-oidc",
-                    postLogoutRedirectUri: $"{webClientRootUrl}signout-callback-oidc",
-                    frontChannelLogoutUri: $"{webClientRootUrl}Account/FrontChannelLogout"
-                );
-            }
         }
 
         private async Task<Client> CreateClientAsync(

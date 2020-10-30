@@ -20,12 +20,12 @@ namespace AbpLoanDemo.Loan.Domain.Data
 
         public async Task MigrateAsync()
         {
-            Logger.LogInformation("Started database migrations...");
+            Logger.LogInformation("Started Loan database migrations...");
 
-            Logger.LogInformation("Migrating database schema...");
+            Logger.LogInformation("Migrating Loan database schema...");
             await _dbSchemaMigrator.MigrateAsync();
 
-            Logger.LogInformation("Successfully completed database migrations.");
+            Logger.LogInformation("Successfully completed Loan database migrations.");
         }
     }
 }
