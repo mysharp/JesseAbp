@@ -10,7 +10,7 @@ namespace AbpLoanDemo.Loan.Application.Contracts
     {
         Task<LoanRequestDto> GetAsync(Guid id);
 
-        Task<List<LoanRequestDto>> GetListAsync();
+        Task<List<LoanRequestDto>> GetListAsync(LoanRequestQueryDto query);
 
         Task<LoanRequestDto> CreateAsync(LoanRequestCreateDto dto);
 

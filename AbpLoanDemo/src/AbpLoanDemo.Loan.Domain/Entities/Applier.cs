@@ -24,5 +24,20 @@ namespace AbpLoanDemo.Loan.Domain.Entities
         public string Phone { get; private set; }
 
         public string IdNo { get; private set; }
+
+        internal void SetName(string name)
+        {
+            Name = name;
+        }
+
+        internal void SetPhone(string phone)
+        {
+            Phone = phone;
+        }
+
+        internal void SetIdNo(string idNo)
+        {
+            IdNo = idNo;
+        }
     }
 }

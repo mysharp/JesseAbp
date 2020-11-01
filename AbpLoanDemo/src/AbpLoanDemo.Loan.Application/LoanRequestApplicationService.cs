@@ -6,6 +6,7 @@ using AbpLoanDemo.Loan.Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Volo.Abp;
 using Volo.Abp.Application.Services;
@@ -17,11 +18,11 @@ namespace AbpLoanDemo.Loan.Application
     [Authorize(LoanPermissions.LoanRequest.Default)]
     public class LoanRequestApplicationService : ApplicationService, ILoanRequestApplicationService
     {
-        private readonly IRepository<LoanRequest> _loanRequestRepository;
+        private readonly IRepository<LoanRequest,Guid> _loanRequestRepository;
         private readonly IUnitOfWorkManager _uowManager;
 
         public LoanRequestApplicationService(ICustomerApplicationService customerApplicationService,
-            IRepository<LoanRequest> loanRequestRepository, IUnitOfWorkManager uowManager)
+            IRepository<LoanRequest, Guid> loanRequestRepository, IUnitOfWorkManager uowManager)
         {
             CustomerApplicationService = customerApplicationService;
             _loanRequestRepository = loanRequestRepository;
@@ -37,11 +38,16 @@ namespace AbpLoanDemo.Loan.Application
             return ObjectMapper.Map<LoanRequest, LoanRequestDto>(loanRequest);
         }
 
-        public virtual async Task<List<LoanRequestDto>> GetListAsync()
+        public virtual async Task<List<LoanRequestDto>> GetListAsync(LoanRequestQueryDto query)
         {
-            var loanRequests = await _loanRequestRepository.GetListAsync(true);
+            var loanRequests = _loanRequestRepository.WithDetails().Where(p => true);
 
-            return ObjectMapper.Map<List<LoanRequest>, List<LoanRequestDto>>(loanRequests);
+            if (query.CustomerId!= Guid.Empty)
+                loanRequests = loanRequests.Where(p => p.Applier.CustomerId == query.CustomerId || p.Partners.Any(c=>c.CustomerId == query.CustomerId));
+
+            var result = await AsyncExecuter.ToListAsync(loanRequests);
+
+            return ObjectMapper.Map<List<LoanRequest>, List<LoanRequestDto>>(result);
         }
 
         [Authorize(LoanPermissions.LoanRequest.Create)]
@@ -55,9 +61,7 @@ namespace AbpLoanDemo.Loan.Application
 
             var loadRequest = new LoanRequest(applier);
 
-            using var uow = _uowManager.Begin();
             var entity = await _loanRequestRepository.InsertAsync(loadRequest);
-            await uow.SaveChangesAsync();
 
             return ObjectMapper.Map<LoanRequest, LoanRequestDto>(entity);
         }
@@ -73,9 +77,7 @@ namespace AbpLoanDemo.Loan.Application
             var partner = new Applier(customer.Id, customer.Name, customer.Phone, customer.IdNo);
             loanRequest.AddPartner(partner);
 
-            using var uow = _uowManager.Begin();
             loanRequest = await _loanRequestRepository.UpdateAsync(loanRequest);
-            await uow.SaveChangesAsync();
 
             return ObjectMapper.Map<LoanRequest, LoanRequestDto>(loanRequest);
         }
@@ -86,9 +88,7 @@ namespace AbpLoanDemo.Loan.Application
             var loanRequest = await _loanRequestRepository.GetAsync(p => p.Id == id);
             loanRequest.SetScore(dto.Score);
 
-            using var uow = _uowManager.Begin();
             loanRequest = await _loanRequestRepository.UpdateAsync(loanRequest);
-            await uow.SaveChangesAsync();
 
             return ObjectMapper.Map<LoanRequest, LoanRequestDto>(loanRequest);
         }
@@ -101,9 +101,7 @@ namespace AbpLoanDemo.Loan.Application
             var loanRequest = await _loanRequestRepository.GetAsync(p => p.Id == id);
             loanRequest.SetGuarantee(guaranteeEntity);
 
-            using var uow = _uowManager.Begin();
             loanRequest = await _loanRequestRepository.UpdateAsync(loanRequest);
-            await uow.SaveChangesAsync();
 
             return ObjectMapper.Map<LoanRequest, LoanRequestDto>(loanRequest);
         }
@@ -114,9 +112,7 @@ namespace AbpLoanDemo.Loan.Application
             var loanRequest = await _loanRequestRepository.GetAsync(p => p.Id == id);
             loanRequest.SetAmount(dto.Amount);
 
-            using var uow = _uowManager.Begin();
             loanRequest = await _loanRequestRepository.UpdateAsync(loanRequest);
-            await uow.SaveChangesAsync();
 
             return ObjectMapper.Map<LoanRequest, LoanRequestDto>(loanRequest);
         }
