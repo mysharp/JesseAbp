@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Domain.Repositories;
 using Volo.Abp.EventBus.Distributed;
+using Volo.Abp.Uow;
 
 namespace AbpLoanDemo.Loan.Application.IntegrationEventHandlers
 {
@@ -18,7 +19,17 @@ namespace AbpLoanDemo.Loan.Application.IntegrationEventHandlers
             _loanRequestRepository = loanRequestRepository;
         }
 
-        public async Task HandleEventAsync(CustomerChangedEto eventData)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="eventData"></param>
+        /// <remarks>
+        ///     virtual：使用代理拦截必须要求方法virtual
+        ///     UnitOfWork：会在方法退出前自动保存数据
+        /// </remarks>
+        /// <returns></returns>
+        [UnitOfWork]
+        public virtual async Task HandleEventAsync(CustomerChangedEto eventData)
         {
             Console.WriteLine($"Received CustomerChangedIntegrationEvent: {eventData.Name}");
 
@@ -32,7 +43,7 @@ namespace AbpLoanDemo.Loan.Application.IntegrationEventHandlers
 
                 loanRequest.UpdatePartners(eventData.Id, eventData.Name, eventData.Phone, eventData.IdNo);
 
-                await _loanRequestRepository.UpdateAsync(loanRequest, true);
+                await _loanRequestRepository.UpdateAsync(loanRequest);
             }
         }
     }
