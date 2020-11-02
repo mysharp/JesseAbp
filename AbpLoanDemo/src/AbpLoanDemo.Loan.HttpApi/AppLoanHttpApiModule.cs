@@ -7,14 +7,14 @@ using EasyAbp.Abp.EventBus.CAP.SqlServer;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
-using System;
-using Microsoft.Extensions.Configuration;
 using Volo.Abp;
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.Autofac;
 using Volo.Abp.Http.Client;
+using Volo.Abp.Http.Client.IdentityModel;
 using Volo.Abp.Modularity;
 using Volo.Abp.PermissionManagement.EntityFrameworkCore;
 
@@ -24,6 +24,7 @@ namespace AbpLoanDemo.Loan.HttpApi
         typeof(AbpPermissionManagementEntityFrameworkCoreModule))]
     [DependsOn(typeof(AbpEventBusCapModule),typeof(AbpEventBusCapSqlServerModule))]
     [DependsOn(typeof(AbpHttpClientModule))] //引入此Module，不然HttpClientProxy报错
+    [DependsOn(typeof(AbpHttpClientIdentityModelModule))] //引入此Module，不然HttpClientProxy 不会带上Token
     [DependsOn(typeof(AppLoanApplicationModule))]
     [DependsOn(typeof(AppCustomerApplicationContractModule))]
     [DependsOn(typeof(AppLoanEntityFrameworkCoreModule))]
@@ -59,10 +60,10 @@ namespace AbpLoanDemo.Loan.HttpApi
 
             app.UseRouting();
 
-            app.UseAuthentication();
-
             app.UseJwtTokenMiddleware();
             app.UseAbpClaimsMap();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
@@ -108,23 +109,20 @@ namespace AbpLoanDemo.Loan.HttpApi
         private void ConfigureAuthentication(IServiceCollection services, IConfiguration configuration)
         {
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddIdentityServerAuthentication(options =>
+                .AddJwtBearer(options =>
                 {
                     options.Authority = configuration["AuthServer:Authority"];
-                    options.ApiName = configuration["AuthServer:ApiName"];
-                    options.ApiSecret = configuration["AuthServer:ClientSecret"];
-
-                    options.SaveToken = true;
-                    options.JwtValidationClockSkew = TimeSpan.FromMinutes(30);
+                    options.Audience = configuration["AuthServer:ApiName"];
 
                     options.RequireHttpsMetadata = false;
+                    options.IncludeErrorDetails = true;
 
-                    //options.JwtBearerEvents.OnMessageReceived = c =>
+                    //options.Events.OnMessageReceived = c =>
                     //{
                     //    Console.WriteLine("Token:" + c.Token);
                     //    return Task.CompletedTask;
                     //};
-                    //options.JwtBearerEvents.OnTokenValidated = c =>
+                    //options.Events.OnTokenValidated = c =>
                     //{
                     //    Console.WriteLine("Principal:" + c.Principal.Identity.Name);
                     //    return Task.CompletedTask;

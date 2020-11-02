@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using System;
+using System.Threading.Tasks;
 using Volo.Abp;
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.Autofac;
@@ -69,27 +70,24 @@ namespace AbpLoanDemo.HttpApi
             var configuration = services.GetConfiguration();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddIdentityServerAuthentication(options =>
+                .AddJwtBearer(options =>
                 {
                     options.Authority = configuration["AuthServer:Authority"];
-                    options.ApiName = configuration["AuthServer:ApiName"];
-                    options.ApiSecret = configuration["AuthServer:ClientSecret"];
-
-                    options.SaveToken = true;
-                    options.JwtValidationClockSkew = TimeSpan.FromMinutes(30);
+                    options.Audience = configuration["AuthServer:ApiName"];
 
                     options.RequireHttpsMetadata = false;
+                    options.IncludeErrorDetails = true;
 
-                    //options.JwtBearerEvents.OnMessageReceived = c =>
-                    //{
-                    //    Console.WriteLine("Token:" + c.Token);
-                    //    return Task.CompletedTask;
-                    //};
-                    //options.JwtBearerEvents.OnTokenValidated = c =>
-                    //{
-                    //    Console.WriteLine("Principal:" + c.Principal.Identity.Name);
-                    //    return Task.CompletedTask;
-                    //};
+                    options.Events.OnMessageReceived = c =>
+                    {
+                        Console.WriteLine("Token:" + c.Token);
+                        return Task.CompletedTask;
+                    };
+                    options.Events.OnTokenValidated = c =>
+                    {
+                        Console.WriteLine("Principal:" + c.Principal.Identity.Name);
+                        return Task.CompletedTask;
+                    };
                 });
         }
 

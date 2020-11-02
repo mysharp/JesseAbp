@@ -13,7 +13,7 @@ using Volo.Abp.Uow;
 
 namespace AbpLoanDemo.Customer.Application
 {
-    [Authorize(CustomerPermissions.Customer.Default)]
+    [Authorize]
     public class CustomerApplicationService : ApplicationService, ICustomerApplicationService
     {
         private readonly IRepository<Domain.Entities.Customer> _customerRepository;
@@ -34,6 +34,7 @@ namespace AbpLoanDemo.Customer.Application
         {
             var user = _accessor.Principal;
             var currentUser = CurrentUser;
+
             var customer = await _customerRepository.GetAsync(p => p.Id == id);
 
             return ObjectMapper.Map<Domain.Entities.Customer, CustomerDto>(customer);
@@ -41,6 +42,9 @@ namespace AbpLoanDemo.Customer.Application
 
         public virtual async Task<List<CustomerDto>> GetListAsync()
         {
+            var user = _accessor.Principal;
+            var currentUser = CurrentUser;
+
             var customers = await _customerRepository.GetListAsync(true);
 
             return ObjectMapper.Map<List<Domain.Entities.Customer>, List<CustomerDto>>(customers);
@@ -68,7 +72,7 @@ namespace AbpLoanDemo.Customer.Application
         public virtual async Task<CustomerDto> UpdateAsync(Guid id, CustomerEditDto customer)
         {
             var entity = await _customerRepository.GetAsync(c => c.Id == id);
-            entity.Update( customer.Name, customer.Address, customer.IdNo);
+            entity.Update(customer.Name, customer.Phone, customer.Address, customer.IdNo);
 
             var updateCustomerResult = await _customerRepository.UpdateAsync(entity, false);
 

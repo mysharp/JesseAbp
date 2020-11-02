@@ -25,9 +25,10 @@ namespace AbpLoanDemo.Customer.Domain.Entities
 
         public IReadOnlyCollection<Linkman> Linkman => _linkman;
 
-        public void Update(string name, string address, string idNo)
+        public void Update(string name, string phone, string address, string idNo)
         {
             Name = name;
+            Phone = phone;
             Address = address;
             IdNo = idNo;
 
