@@ -78,16 +78,16 @@ namespace AbpLoanDemo.HttpApi
                     options.RequireHttpsMetadata = false;
                     options.IncludeErrorDetails = true;
 
-                    options.Events.OnMessageReceived = c =>
-                    {
-                        Console.WriteLine("Token:" + c.Token);
-                        return Task.CompletedTask;
-                    };
-                    options.Events.OnTokenValidated = c =>
-                    {
-                        Console.WriteLine("Principal:" + c.Principal.Identity.Name);
-                        return Task.CompletedTask;
-                    };
+                    //options.Events.OnMessageReceived = c =>
+                    //{
+                    //    Console.WriteLine("Token:" + c.Token);
+                    //    return Task.CompletedTask;
+                    //};
+                    //options.Events.OnTokenValidated = c =>
+                    //{
+                    //    Console.WriteLine("Principal:" + c.Principal.Identity.Name);
+                    //    return Task.CompletedTask;
+                    //};
                 });
         }
 
